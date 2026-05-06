@@ -250,7 +250,19 @@ p + p{margin-top:1em}
 .founder:nth-child(2){margin-top:34px}
 .founder:nth-child(3){margin-top:14px}
 .founder:nth-child(4){margin-top:48px}
-.founder .ill{height:200px; display:flex; align-items:flex-end}
+.founder .ill{height:240px; display:flex; align-items:flex-end}
+.founder .ill.founder-img{
+  background-image:url('assets/founders.png');
+  background-size:400% 100%;
+  background-repeat:no-repeat;
+  background-position:calc(var(--slice, 0) * 33.333%) center;
+  background-color:transparent;
+  width:100%;
+  /* fallback dotted frame appears if the file is missing */
+  outline:1px dashed var(--rule);
+  outline-offset:-4px;
+}
+@media (max-width:600px){ .founder .ill{height:300px} }
 .founder .name{font-family:var(--serif); font-size:32px; font-weight:300; line-height:1; letter-spacing:-.01em}
 .founder .name .deva{color:var(--pink); font-family:var(--deva); margin-right:2px}
 .founder .role{font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; opacity:.6}
@@ -683,27 +695,7 @@ p + p{margin-top:1em}
     <div class="founders">
       <!-- founder 1: Prakrutee -->
       <div class="founder">
-        <div class="ill">
-          <svg viewBox="0 0 130 200" width="100%" preserveAspectRatio="xMidYEnd meet" aria-hidden="true">
-            <!-- composed silhouette: bun, neck, shoulders, draped torso -->
-            <g fill="none" stroke="#9C1A55" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-              <ellipse cx="65" cy="38" rx="20" ry="24"/>
-              <path d="M55 22 Q65 8 75 22"/>
-              <circle cx="60" cy="38" r="1.5" fill="#9C1A55"/>
-              <circle cx="72" cy="38" r="1.5" fill="#9C1A55"/>
-              <path d="M58 48 Q65 53 72 48"/>
-              <path d="M50 60 L40 80 L42 130 Q65 138 88 130 L90 80 L80 60"/>
-              <path d="M50 60 Q65 56 80 60"/>
-              <!-- visible strap detail -->
-              <path d="M52 70 L48 90" stroke="#9C1A55" stroke-width="2"/>
-              <path d="M78 70 L82 90" stroke="#9C1A55" stroke-width="2"/>
-              <path d="M48 90 Q65 95 82 90"/>
-              <!-- arms -->
-              <path d="M40 80 L34 130"/>
-              <path d="M90 80 L96 130"/>
-            </g>
-          </svg>
-        </div>
+        <div class="ill founder-img" style="--slice:0" role="img" aria-label="Prakrutee — illustrated portrait"></div>
         <div class="role">Founder · 01</div>
         <div class="name"><span class="deva">प्र</span>krutee</div>
         <div class="desc">Holds the system. Diagrams that breathe.</div>
@@ -711,23 +703,7 @@ p + p{margin-top:1em}
 
       <!-- founder 2: Asmita -->
       <div class="founder">
-        <div class="ill">
-          <svg viewBox="0 0 130 200" width="100%" preserveAspectRatio="xMidYEnd meet" aria-hidden="true">
-            <g fill="none" stroke="#9C1A55" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-              <!-- side-parted long hair -->
-              <path d="M40 50 Q40 14 65 12 Q92 14 92 52 L88 100 L82 60"/>
-              <ellipse cx="65" cy="40" rx="18" ry="22" fill="#F0E8D9"/>
-              <circle cx="60" cy="40" r="1.5" fill="#9C1A55"/>
-              <circle cx="72" cy="40" r="1.5" fill="#9C1A55"/>
-              <path d="M58 50 Q65 54 72 50"/>
-              <path d="M48 62 L38 86 L42 130 Q65 138 88 130 L92 86 L82 62"/>
-              <!-- ties / soft straps -->
-              <path d="M52 68 L55 85 Q60 88 65 85 Q70 88 75 85 L78 68" stroke="#9C1A55" stroke-width="1.6"/>
-              <path d="M40 86 L34 130"/>
-              <path d="M92 86 L98 130"/>
-            </g>
-          </svg>
-        </div>
+        <div class="ill founder-img" style="--slice:1" role="img" aria-label="Asmita — illustrated portrait"></div>
         <div class="role">Founder · 02</div>
         <div class="name"><span class="deva">अ</span>smita</div>
         <div class="desc">Material custodian. Reads tags, asks twice.</div>
@@ -735,25 +711,7 @@ p + p{margin-top:1em}
 
       <!-- founder 3: Ashwini -->
       <div class="founder">
-        <div class="ill">
-          <svg viewBox="0 0 130 200" width="100%" preserveAspectRatio="xMidYEnd meet" aria-hidden="true">
-            <g fill="none" stroke="#9C1A55" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-              <!-- short hair, frontal -->
-              <path d="M44 32 Q42 12 65 12 Q88 12 86 32 L82 50 L48 50 Z" fill="#9C1A55" stroke="none"/>
-              <ellipse cx="65" cy="42" rx="18" ry="22" fill="#F0E8D9"/>
-              <circle cx="60" cy="42" r="1.5" fill="#9C1A55"/>
-              <circle cx="72" cy="42" r="1.5" fill="#9C1A55"/>
-              <path d="M58 52 Q65 56 72 52"/>
-              <!-- visible cross-strap bra -->
-              <path d="M50 64 L44 90 L48 130 Q65 138 88 130 L92 90 L86 64"/>
-              <path d="M50 64 L70 88"/>
-              <path d="M86 64 L66 88"/>
-              <path d="M44 90 Q65 96 92 90"/>
-              <path d="M44 90 L36 130"/>
-              <path d="M92 90 L100 130"/>
-            </g>
-          </svg>
-        </div>
+        <div class="ill founder-img" style="--slice:2" role="img" aria-label="Ashwini — illustrated portrait"></div>
         <div class="role">Founder · 03</div>
         <div class="name"><span class="deva">अ</span>shwini</div>
         <div class="desc">Layout instigator. Negative space evangelist.</div>
@@ -761,25 +719,7 @@ p + p{margin-top:1em}
 
       <!-- founder 4: Daisy -->
       <div class="founder">
-        <div class="ill">
-          <svg viewBox="0 0 130 200" width="100%" preserveAspectRatio="xMidYEnd meet" aria-hidden="true">
-            <g fill="none" stroke="#9C1A55" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-              <!-- braided -->
-              <ellipse cx="65" cy="40" rx="20" ry="24"/>
-              <path d="M65 64 Q60 80 65 100 Q70 116 65 130"/>
-              <circle cx="60" cy="40" r="1.5" fill="#9C1A55"/>
-              <circle cx="72" cy="40" r="1.5" fill="#9C1A55"/>
-              <path d="M58 50 Q65 53 72 50"/>
-              <!-- triangle bra silhouette -->
-              <path d="M52 68 L40 86 L46 130 Q65 138 84 130 L90 86 L78 68"/>
-              <path d="M52 68 L65 86 L78 68"/>
-              <path d="M52 68 L48 56" stroke-width="2"/>
-              <path d="M78 68 L82 56" stroke-width="2"/>
-              <path d="M40 86 L34 130"/>
-              <path d="M90 86 L96 130"/>
-            </g>
-          </svg>
-        </div>
+        <div class="ill founder-img" style="--slice:3" role="img" aria-label="Daisy — illustrated portrait"></div>
         <div class="role">Founder · 04</div>
         <div class="name"><span class="deva">डे</span>aisy</div>
         <div class="desc">Doodle archivist. The chaos under the calm.</div>
