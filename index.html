@@ -1,0 +1,1812 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>चोली — Choli. A study in visible intimacy.</title>
+<meta name="description" content="Choli is a design-led intimate wear study. Lingerie repositioned as a visible, durable, and materially conscious garment, rooted in indigenous cotton systems." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+/* ---------- TOKENS ---------- */
+:root{
+  --paper:#F0E8D9;          /* warm off-white */
+  --paper-2:#E8DFCB;        /* slightly darker paper */
+  --ink:#141210;            /* near-black */
+  --ink-soft:#1F1B17;
+  --pink:#9C1A55;           /* deep saturated bodily pink */
+  --pink-deep:#7A1241;
+  --pink-soft:#C7849A;      /* muted dusty pink */
+  --rule:rgba(20,18,16,.18);
+  --rule-strong:rgba(20,18,16,.55);
+
+  --serif:"Fraunces", "Times New Roman", serif;
+  --deva:"Tiro Devanagari Hindi", "Fraunces", serif;
+  --sans:"Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  --mono:"JetBrains Mono", "SFMono-Regular", monospace;
+
+  --max:1380px;
+  --gutter:clamp(20px, 4vw, 60px);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+body{font-size:15px;line-height:1.55;font-weight:400;letter-spacing:.005em;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--pink);color:var(--paper)}
+
+/* ---------- LAYOUT PRIMITIVES ---------- */
+.page{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);position:relative}
+.full{width:100%;padding:0 var(--gutter)}
+.col-narrow{max-width:560px}
+.col-mid{max-width:760px}
+
+.kicker{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--ink);
+  opacity:.65;
+}
+.deva{font-family:var(--deva);font-feature-settings:"calt" 1}
+.serif{font-family:var(--serif)}
+.italic{font-style:italic}
+.pink{color:var(--pink)}
+.muted{opacity:.6}
+
+hr.rule{border:0;height:1px;background:var(--rule);margin:0}
+hr.rule.strong{background:var(--rule-strong)}
+
+.chapter{
+  position:relative;
+  padding:clamp(80px, 14vh, 180px) 0 clamp(60px, 10vh, 130px);
+  border-top:1px solid var(--rule);
+}
+.chapter::before{
+  content:attr(data-num) " — " attr(data-title);
+  position:absolute;
+  top:14px;
+  left:var(--gutter);
+  right:var(--gutter);
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  opacity:.55;
+  display:flex;
+  justify-content:space-between;
+}
+.chapter::before{display:block}
+
+.chapter-num-deva{
+  font-family:var(--deva);
+  font-size:14px;
+  letter-spacing:.05em;
+  opacity:.7;
+}
+
+/* ---------- TYPE SYSTEM ---------- */
+h1,h2,h3,h4{font-weight:400;font-family:var(--serif);letter-spacing:-.01em}
+h1{font-size:clamp(48px, 10vw, 148px); line-height:.92; font-weight:300}
+h2{font-size:clamp(36px, 6vw, 84px); line-height:.95; font-weight:300}
+h3{font-size:clamp(22px, 2.6vw, 36px); line-height:1.1; font-weight:400}
+h4{font-size:clamp(15px, 1.1vw, 18px); font-family:var(--mono); font-weight:400; letter-spacing:.16em; text-transform:uppercase}
+
+p{font-size:clamp(15px, 1.05vw, 17px); line-height:1.55; max-width:62ch}
+p + p{margin-top:1em}
+
+.lead{font-family:var(--serif);font-size:clamp(20px, 2vw, 28px);line-height:1.32;font-weight:300;letter-spacing:-.005em}
+
+/* ---------- TOP BAR & NAV ---------- */
+.topbar{
+  position:fixed; top:0; left:0; right:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px var(--gutter);
+  background:linear-gradient(to bottom, rgba(240,232,217,.92), rgba(240,232,217,0));
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  pointer-events:none;
+}
+.topbar > *{pointer-events:auto}
+.brand-mark{font-family:var(--deva); font-size:24px; line-height:1; color:var(--pink); font-weight:400}
+.brand-mark span{font-family:var(--mono); font-size:10px; letter-spacing:.22em; color:var(--ink); opacity:.7; margin-left:8px; vertical-align:middle; text-transform:uppercase}
+.idx-toggle{
+  font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase;
+  background:transparent; border:0; cursor:pointer; color:var(--ink);
+  display:flex; align-items:center; gap:8px;
+}
+.idx-toggle::before{content:""; width:18px; height:1px; background:var(--ink)}
+
+/* index drawer */
+.idx{
+  position:fixed; top:0; right:0; bottom:0; width:min(420px, 92vw);
+  background:var(--ink); color:var(--paper);
+  z-index:60; padding:24px var(--gutter); transform:translateX(100%);
+  transition:transform .55s cubic-bezier(.7,.05,.25,1);
+  overflow-y:auto;
+}
+.idx.open{transform:translateX(0)}
+.idx h4{color:var(--pink-soft); margin-bottom:24px}
+.idx ol{list-style:none; counter-reset:idx;}
+.idx ol li{counter-increment:idx; border-bottom:1px solid rgba(240,232,217,.12); padding:12px 0; display:flex; gap:14px; align-items:baseline}
+.idx ol li::before{
+  content:counter(idx, decimal-leading-zero);
+  font-family:var(--mono); font-size:11px; opacity:.55; flex:0 0 32px;
+}
+.idx ol li a{font-family:var(--serif); font-size:21px; font-weight:300; line-height:1.2; flex:1; transition:color .2s}
+.idx ol li a:hover{color:var(--pink-soft)}
+.idx ol li .deva-num{font-family:var(--deva); font-size:13px; opacity:.55; flex:0 0 30px}
+.idx-close{
+  position:absolute; top:18px; right:var(--gutter);
+  background:transparent; border:0; color:var(--paper); font-family:var(--mono); font-size:11px;
+  letter-spacing:.18em; text-transform:uppercase; cursor:pointer; padding:6px;
+}
+.idx .closing{margin-top:32px; opacity:.5; font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase}
+
+/* ---------- HOME ---------- */
+.home{
+  min-height:100vh; padding:clamp(110px, 14vh, 180px) 0 60px;
+  display:grid; grid-template-columns:repeat(12, 1fr);
+  column-gap:clamp(12px, 2vw, 30px);
+  align-items:start;
+}
+.home::before{display:none}
+.home .meta{
+  grid-column:1 / span 4;
+  font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+  opacity:.7; line-height:1.7;
+}
+.home .meta .pulse{display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--pink); margin-right:8px; vertical-align:middle; animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+
+.home .mark{
+  grid-column:1 / span 12;
+  margin:clamp(10px, 4vh, 50px) 0 0;
+  position:relative;
+}
+.home .mark .word{
+  font-family:var(--deva);
+  font-size:clamp(160px, 30vw, 460px);
+  color:var(--pink);
+  line-height:.78;
+  letter-spacing:-.04em;
+  font-weight:400;
+  position:relative;
+}
+.home .mark .latin{
+  position:absolute;
+  bottom:6%;
+  right:0;
+  font-family:var(--serif);
+  font-size:clamp(40px, 7vw, 96px);
+  font-style:italic;
+  font-weight:300;
+  line-height:.9;
+  color:var(--ink);
+  letter-spacing:-.02em;
+}
+.home .mark .latin small{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; font-style:normal; opacity:.6; margin-top:14px}
+
+.home .strap{
+  grid-column:9 / span 4;
+  margin-top:-30px;
+  text-align:right;
+}
+
+.home .manifesto{
+  grid-column:6 / span 7;
+  margin-top:clamp(30px, 6vh, 70px);
+  font-family:var(--serif); font-weight:300;
+  font-size:clamp(22px, 2.4vw, 34px);
+  line-height:1.28; letter-spacing:-.005em;
+  max-width:42ch;
+}
+.home .manifesto em{font-style:italic; color:var(--pink)}
+.home .manifesto::before{
+  content:"";
+  display:block; width:42px; height:1px; background:var(--pink); margin-bottom:18px;
+}
+
+.home .footer-row{
+  grid-column:1 / span 12;
+  display:flex; justify-content:space-between; align-items:flex-end;
+  padding-top:clamp(40px, 8vh, 90px);
+  font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; opacity:.6;
+}
+
+/* arrow scroll cue */
+.scroll-cue{
+  display:inline-flex; align-items:center; gap:10px;
+  font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase;
+}
+.scroll-cue::after{content:"↓"; font-size:14px}
+
+/* ---------- ABOUT ---------- */
+.about-grid{
+  display:grid; grid-template-columns:repeat(12,1fr);
+  column-gap:clamp(14px, 2vw, 32px); row-gap:60px;
+  margin-top:50px;
+}
+.about-intro{ grid-column:1 / span 7 }
+.about-intro h2{margin-bottom:32px}
+.about-aside{ grid-column:9 / span 4; padding-top:14px }
+.about-aside p{font-family:var(--serif); font-style:italic; font-weight:300; font-size:18px; line-height:1.4; opacity:.85}
+
+.founders{
+  grid-column:1 / span 12;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(18px,2vw,40px);
+  margin-top:30px;
+}
+.founder{
+  display:flex; flex-direction:column; gap:14px;
+  border-top:1px solid var(--rule); padding-top:22px;
+  position:relative;
+}
+.founder:nth-child(2){margin-top:34px}
+.founder:nth-child(3){margin-top:14px}
+.founder:nth-child(4){margin-top:48px}
+.founder .ill{height:200px; display:flex; align-items:flex-end}
+.founder .name{font-family:var(--serif); font-size:32px; font-weight:300; line-height:1; letter-spacing:-.01em}
+.founder .name .deva{color:var(--pink); font-family:var(--deva); margin-right:2px}
+.founder .role{font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; opacity:.6}
+.founder .desc{font-family:var(--serif); font-style:italic; font-size:15px; line-height:1.45; opacity:.85; max-width:24ch}
+
+/* doodle row */
+.doodle-row{
+  grid-column:1 / span 12;
+  background:var(--ink); color:var(--paper);
+  padding:60px clamp(20px,4vw,60px); margin-top:30px;
+  display:grid; grid-template-columns:1fr 2fr; gap:50px; align-items:center;
+}
+.doodle-row .label{ color:var(--pink-soft) }
+.doodle-row h3{color:var(--paper); font-style:italic; font-weight:300; max-width:28ch}
+.doodle-row .strip{display:flex; justify-content:space-around; gap:20px; flex-wrap:wrap}
+.doodle-row .strip svg{height:160px; flex:0 0 auto}
+
+/* ---------- VISION & MISSION ---------- */
+.vm-grid{
+  display:grid; grid-template-columns:repeat(12,1fr); gap:clamp(20px,2.5vw,40px);
+  margin-top:40px; align-items:start;
+}
+.vm-vision{ grid-column:1 / span 7 }
+.vm-mission{ grid-column:8 / span 5; padding-top:20px; border-top:1px solid var(--rule); margin-top:90px }
+.vm-vision h2{font-style:italic}
+.vm-vision .big{
+  font-family:var(--serif); font-style:italic; font-weight:300;
+  font-size:clamp(30px,3.6vw,52px); line-height:1.15; letter-spacing:-.01em;
+}
+.vm-vision .big em{color:var(--pink); font-style:italic}
+.vm-mission ol{list-style:none; counter-reset:m; margin-top:18px}
+.vm-mission ol li{counter-increment:m; padding:18px 0; border-bottom:1px solid var(--rule); display:flex; gap:14px}
+.vm-mission ol li::before{
+  content:counter(m, decimal-leading-zero);
+  font-family:var(--mono); font-size:11px; opacity:.5; flex:0 0 32px; padding-top:3px;
+}
+.vm-mission ol li p{font-size:15px; line-height:1.55}
+
+/* ---------- PROBLEM ---------- */
+.problem-grid{
+  display:grid; grid-template-columns:repeat(12,1fr); gap:clamp(14px,2vw,30px);
+  margin-top:40px;
+}
+.problem-grid h2{ grid-column:1 / span 8; margin-bottom:24px }
+.problem-grid .intro{ grid-column:1 / span 7 }
+.problem-grid .intro p{font-size:19px; line-height:1.45; font-family:var(--serif); font-weight:300}
+.problem-list{ grid-column:1 / span 12; margin-top:50px }
+.problem-list .row{
+  display:grid; grid-template-columns:80px 220px 1fr;
+  gap:24px; padding:22px 0; border-top:1px solid var(--rule); align-items:baseline;
+}
+.problem-list .row:last-child{border-bottom:1px solid var(--rule)}
+.problem-list .row .n{font-family:var(--mono); font-size:11px; letter-spacing:.18em; opacity:.55}
+.problem-list .row .term{font-family:var(--serif); font-style:italic; font-size:22px; font-weight:400; color:var(--pink); line-height:1.1}
+.problem-list .row .body{font-size:15px; line-height:1.55; opacity:.9; max-width:60ch}
+
+.decompose-bar{
+  margin-top:60px; grid-column:1 / span 12;
+  display:flex; align-items:center; gap:14px;
+  font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; opacity:.7;
+}
+.decompose-bar .bar{flex:1; height:1px; background:var(--rule-strong); position:relative}
+.decompose-bar .bar::before, .decompose-bar .bar::after{
+  content:""; position:absolute; top:-3px; width:1px; height:7px; background:var(--ink);
+}
+.decompose-bar .bar::before{left:0}
+.decompose-bar .bar::after{right:0}
+.decompose-bar .marker{position:absolute; top:-3px; width:1px; height:7px; background:var(--pink)}
+
+/* ---------- INTERVENTION ---------- */
+.inter{
+  display:grid; grid-template-columns:repeat(12,1fr); gap:clamp(14px,2vw,30px);
+  margin-top:40px;
+}
+.inter h2{grid-column:1 / span 12; font-style:italic}
+.inter .lead{grid-column:6 / span 7; margin-top:14px}
+.inter .moves{
+  grid-column:1 / span 12; margin-top:60px;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(14px,2vw,28px);
+}
+.move{ padding:24px 18px 24px 0; border-top:2px solid var(--pink); }
+.move .num{font-family:var(--mono); font-size:11px; opacity:.5; letter-spacing:.18em; margin-bottom:10px}
+.move h3{font-family:var(--serif); font-size:24px; font-weight:300; font-style:italic; line-height:1.1; margin-bottom:14px}
+.move p{font-size:14px; line-height:1.55; opacity:.85}
+
+/* ---------- DESIGN PHILOSOPHY ---------- */
+.philo{
+  display:grid; grid-template-columns:repeat(12,1fr); gap:30px;
+  margin-top:40px;
+}
+.philo h2{grid-column:1 / span 12}
+.philo .pillar{
+  grid-column:span 4;
+  position:relative; padding:40px 18px 30px;
+  border:1px solid var(--rule); background:var(--paper-2);
+}
+.philo .pillar:nth-child(2){margin-top:50px; transform:rotate(-.4deg)}
+.philo .pillar:nth-child(3){transform:rotate(.5deg)}
+.philo .pillar:nth-child(4){margin-top:30px; transform:rotate(-.2deg)}
+.philo .pillar .pn{
+  position:absolute; top:-14px; left:18px; background:var(--paper); padding:0 8px;
+  font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--pink);
+}
+.philo .pillar h3{font-family:var(--serif); font-style:italic; font-size:30px; font-weight:300; margin-bottom:16px; line-height:1}
+.philo .pillar p{font-size:14px; line-height:1.55; margin-bottom:10px}
+.philo .pillar .quote{
+  margin-top:18px; padding-top:14px; border-top:1px solid var(--rule);
+  font-family:var(--deva); font-size:14px; color:var(--pink);
+}
+.philo .pillar .quote em{font-family:var(--serif); font-style:italic; color:var(--ink); display:block; margin-top:4px}
+
+/* ---------- AUDIENCE ---------- */
+.aud{
+  display:grid; grid-template-columns:repeat(12,1fr); gap:clamp(20px,2.5vw,40px);
+  margin-top:40px;
+}
+.aud h2{grid-column:1 / span 12; margin-bottom:14px}
+.aud .lead{grid-column:1 / span 8; margin-bottom:30px}
+
+.persona{grid-column:1 / span 12; display:grid; grid-template-columns:280px 1fr; gap:50px; align-items:start; padding-top:30px; border-top:1px solid var(--rule)}
+.persona .head{position:sticky; top:80px}
+.persona .head .pname{font-family:var(--serif); font-size:34px; font-weight:300; line-height:1; letter-spacing:-.01em}
+.persona .head .pname em{font-style:italic; color:var(--pink)}
+.persona .head .pmeta{margin-top:18px; font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; line-height:1.9; opacity:.75}
+.persona .head .pmeta b{font-weight:400; color:var(--pink); margin-right:8px}
+.persona .body{display:grid; grid-template-columns:1fr 1fr; gap:30px}
+.persona .body .group h4{margin-bottom:14px; color:var(--pink)}
+.persona .body .group ul{list-style:none}
+.persona .body .group li{padding:10px 0; border-bottom:1px solid var(--rule); font-size:14px; line-height:1.45}
+.persona .body .group li::before{content:"— "; color:var(--pink); margin-right:6px}
+
+.psycho{grid-column:1 / span 12; margin-top:40px; padding-top:30px; border-top:1px solid var(--rule)}
+.psycho h4{margin-bottom:18px}
+.psycho-cols{display:grid; grid-template-columns:repeat(4,1fr); gap:24px}
+.psycho-cols .col h5{font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--pink); margin-bottom:12px; font-weight:400}
+.psycho-cols .col ul{list-style:none}
+.psycho-cols .col li{font-size:13px; padding:7px 0; border-bottom:1px dotted var(--rule); line-height:1.4}
+
+/* ---------- VPC ---------- */
+.vpc{
+  display:grid; grid-template-columns:repeat(12,1fr); gap:30px; margin-top:40px;
+}
+.vpc h2{grid-column:1 / span 12}
+.vpc .vp-card{
+  grid-column:span 6; padding:30px; border:1px solid var(--rule-strong); position:relative;
+  background:var(--paper-2);
+}
+.vpc .vp-card.right{background:var(--ink); color:var(--paper); border:1px solid var(--ink)}
+.vpc .vp-card.right h3, .vpc .vp-card.right h4{color:var(--pink-soft)}
+.vpc .vp-card .shape{
+  position:absolute; top:-1px; left:-1px; width:64px; height:64px;
+  background:var(--pink); display:flex; align-items:center; justify-content:center;
+  font-family:var(--deva); color:var(--paper); font-size:22px;
+}
+.vpc .vp-card.right .shape{background:var(--paper); color:var(--ink)}
+.vpc .vp-card h3{margin:36px 0 24px; font-family:var(--serif); font-style:italic; font-size:28px; font-weight:300}
+.vpc .vp-card .block{margin-bottom:22px}
+.vpc .vp-card .block h4{font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; margin-bottom:10px; color:var(--pink)}
+.vpc .vp-card .block ul{list-style:none}
+.vpc .vp-card .block li{padding:5px 0; font-size:14px; line-height:1.4}
+.vpc .vp-card .block li::before{content:"·  "; color:var(--pink); font-weight:bold}
+
+.vpc-fit{grid-column:1 / span 12; text-align:center; padding-top:30px; border-top:1px dashed var(--rule)}
+.vpc-fit h4{display:inline-block; padding:8px 20px; background:var(--pink); color:var(--paper); border:0}
+.vpc-fit p{margin:14px auto 0; max-width:48ch; font-style:italic; font-family:var(--serif); font-size:18px; opacity:.85}
+
+/* ---------- COMPETITORS ---------- */
+.comp{margin-top:40px}
+.comp h2{margin-bottom:24px}
+.comp .lead{max-width:64ch; margin-bottom:50px}
+.comp-table{
+  display:grid; grid-template-columns:160px repeat(3, 1fr);
+  border-top:1px solid var(--rule-strong);
+}
+.comp-table > div{padding:18px 14px; border-bottom:1px solid var(--rule); font-size:14px; line-height:1.45}
+.comp-table .row-h{font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; opacity:.7; padding-top:24px}
+.comp-table .col-h{font-family:var(--serif); font-size:24px; font-weight:300; font-style:italic; padding:24px 14px; border-bottom:2px solid var(--ink)}
+.comp-table .col-h.us{color:var(--pink); font-weight:400}
+.comp-table .col-h sub{display:block; font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; opacity:.55; margin-top:6px; font-style:normal}
+.comp-table .strength{color:var(--pink-deep)}
+.comp-table .limit{opacity:.7; font-style:italic; font-family:var(--serif)}
+
+/* ---------- SWOT ---------- */
+.swot{margin-top:40px}
+.swot h2{margin-bottom:14px}
+.swot-grid{display:grid; grid-template-columns:140px 1fr 1fr; gap:0; margin-top:30px; border-top:1px solid var(--ink)}
+.swot-grid .h{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; padding:14px 12px; border-bottom:1px solid var(--rule); opacity:.7; align-self:center}
+.swot-grid .h.col{text-align:center; border-bottom:1px solid var(--ink)}
+.swot-grid .h.col.pos{color:var(--pink)}
+.swot-grid .h.col.neg{color:var(--ink); opacity:.85}
+.swot-grid .cell{padding:18px 16px; border-bottom:1px solid var(--rule); border-left:1px solid var(--rule); font-size:13.5px; line-height:1.5}
+.swot-grid .cell ul{list-style:none}
+.swot-grid .cell li{padding:5px 0; position:relative; padding-left:14px}
+.swot-grid .cell li::before{content:"+"; position:absolute; left:0; color:var(--pink)}
+.swot-grid .cell.neg li::before{content:"–"; color:var(--ink); opacity:.6}
+
+/* ---------- TOWS ---------- */
+.tows{margin-top:40px}
+.tows h2{margin-bottom:6px}
+.tows .lead{margin-bottom:30px}
+.tows-grid{display:grid; grid-template-columns:140px 1fr 1fr; border-top:1px solid var(--ink)}
+.tows-grid .h{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; padding:14px 12px; border-bottom:1px solid var(--rule); opacity:.7; align-self:center}
+.tows-grid .h.col{text-align:center; border-bottom:1px solid var(--ink)}
+.tows-grid .cell{padding:22px 18px; border-bottom:1px solid var(--rule); border-left:1px solid var(--rule); font-size:13.5px; line-height:1.5}
+.tows-grid .cell .label{font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--pink); margin-bottom:10px}
+.tows-grid .cell ul{list-style:none}
+.tows-grid .cell li{padding:5px 0; position:relative; padding-left:14px}
+.tows-grid .cell li::before{content:"→"; position:absolute; left:0; color:var(--pink)}
+
+/* ---------- PRODUCT ---------- */
+.product{margin-top:40px}
+.product h2{margin-bottom:20px}
+.proto-grid{display:grid; grid-template-columns:repeat(12,1fr); gap:30px; margin-top:40px; align-items:start}
+.proto-card{grid-column:span 4; border-top:1px solid var(--rule); padding-top:24px}
+.proto-card .lbl{font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; opacity:.65; margin-bottom:14px}
+.proto-card .ill{height:280px; display:flex; align-items:center; justify-content:center; background:var(--paper-2)}
+.proto-card h3{margin-top:16px; font-family:var(--serif); font-style:italic; font-size:24px; font-weight:300}
+.proto-card p{font-size:14px; line-height:1.5; margin-top:8px; opacity:.85}
+
+.specs{grid-column:1 / span 12; margin-top:60px; display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid var(--ink)}
+.specs .item{padding:24px 18px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule)}
+.specs .item:last-child{border-right:0}
+.specs .item h4{color:var(--pink); margin-bottom:10px}
+.specs .item p{font-size:13px; line-height:1.45}
+
+/* ---------- PACKAGING ---------- */
+.pack{margin-top:40px}
+.pack h2{margin-bottom:14px}
+.pack .lead{margin-bottom:40px; max-width:64ch}
+.pack-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:30px}
+.pack-card{background:var(--ink); color:var(--paper); padding:20px; aspect-ratio:1; display:flex; flex-direction:column; justify-content:space-between}
+.pack-card .num{font-family:var(--mono); font-size:11px; letter-spacing:.18em; opacity:.5}
+.pack-card .ill{flex:1; display:flex; align-items:center; justify-content:center; padding:14px 0}
+.pack-card h3{font-family:var(--serif); font-style:italic; font-size:22px; font-weight:300; color:var(--pink-soft)}
+.pack-card p{font-size:12px; line-height:1.4; opacity:.7; margin-top:4px}
+
+.pack-note{margin-top:30px; display:grid; grid-template-columns:1fr 1fr; gap:50px; padding-top:30px; border-top:1px solid var(--rule)}
+.pack-note h4{color:var(--pink); margin-bottom:12px}
+
+/* ---------- ILLUSTRATION SYSTEM ---------- */
+.ills{margin-top:40px}
+.ills h2{margin-bottom:14px}
+.ills .lead{margin-bottom:50px; max-width:64ch}
+.ills-pair{display:grid; grid-template-columns:1fr 1fr; gap:0; margin-top:30px}
+.ills-pair .layer{padding:50px 40px; min-height:400px; display:flex; flex-direction:column; gap:24px}
+.ills-pair .layer.left{background:var(--paper-2); border-right:1px solid var(--rule-strong)}
+.ills-pair .layer.right{background:var(--ink); color:var(--paper)}
+.ills-pair .layer .lbl{font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--pink)}
+.ills-pair .layer h3{font-family:var(--serif); font-style:italic; font-size:30px; font-weight:300; line-height:1.1}
+.ills-pair .layer.right h3{color:var(--paper)}
+.ills-pair .layer p{font-size:14px; line-height:1.55}
+.ills-pair .layer .show{flex:1; display:flex; align-items:center; justify-content:center; margin-top:14px}
+
+.intersect{
+  text-align:center; padding:50px 0 0;
+  font-family:var(--serif); font-style:italic; font-size:24px; font-weight:300; max-width:46ch; margin:0 auto;
+}
+.intersect::before{content:"⊗"; display:block; font-size:30px; color:var(--pink); margin-bottom:18px; font-style:normal}
+
+/* ---------- MARKETING ---------- */
+.mark5{margin-top:40px}
+.mark5 h2{margin-bottom:14px}
+.mark5 .lead{margin-bottom:40px}
+.fivep{display:grid; grid-template-columns:repeat(5,1fr); gap:0; margin-top:30px; border-top:1px solid var(--ink)}
+.fivep .p{padding:24px 18px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); position:relative}
+.fivep .p:last-child{border-right:0}
+.fivep .p .letter{font-family:var(--deva); font-size:60px; line-height:1; color:var(--pink); margin-bottom:8px}
+.fivep .p h4{margin-bottom:10px; font-family:var(--mono)}
+.fivep .p ul{list-style:none}
+.fivep .p li{font-size:13px; padding:5px 0; line-height:1.45; border-bottom:1px dotted var(--rule)}
+
+.message{
+  margin-top:60px; padding:60px 40px; background:var(--pink); color:var(--paper); text-align:center;
+  position:relative;
+}
+.message .lbl{font-family:var(--mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; opacity:.7; margin-bottom:18px}
+.message .slogan{font-family:var(--serif); font-style:italic; font-weight:300; font-size:clamp(40px, 7vw, 96px); line-height:1; letter-spacing:-.02em}
+.message .deva-tag{font-family:var(--deva); font-size:24px; margin-top:24px; opacity:.8}
+
+/* ---------- COST SHEET ---------- */
+.cost{margin-top:40px}
+.cost h2{margin-bottom:14px}
+.cost .lead{margin-bottom:30px}
+.cost-table{display:grid; grid-template-columns:1.4fr .4fr; max-width:680px; border-top:1px solid var(--ink); font-family:var(--mono); font-size:13px}
+.cost-table .row{display:contents}
+.cost-table .cell{padding:12px 14px; border-bottom:1px solid var(--rule); display:flex; align-items:center}
+.cost-table .cell.r{justify-content:flex-end; font-variant-numeric:tabular-nums}
+.cost-table .cell.lbl{opacity:.7; letter-spacing:.06em}
+.cost-table .total .cell{border-top:1px solid var(--ink); font-weight:500; color:var(--pink); font-size:14px}
+.cost-table .grand .cell{border-bottom:1px solid var(--ink); border-top:1px solid var(--rule)}
+
+.cost-derived{margin-top:30px; display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:680px}
+.cost-derived .box{padding:18px; background:var(--paper-2); border:1px solid var(--rule)}
+.cost-derived .box .l{font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; opacity:.6}
+.cost-derived .box .v{font-family:var(--serif); font-size:30px; font-weight:300; color:var(--pink); margin-top:6px; font-feature-settings:"tnum"}
+
+/* ---------- COLOPHON ---------- */
+.colophon{
+  border-top:1px solid var(--rule);
+  padding:80px 0 40px;
+  display:grid; grid-template-columns:repeat(12,1fr); gap:30px;
+  font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+  opacity:.7;
+}
+.colophon .col{grid-column:span 3}
+.colophon .col h5{color:var(--pink); margin-bottom:12px; font-weight:400; font-size:11px; letter-spacing:.22em}
+.colophon .col p, .colophon .col li{font-size:11px; line-height:1.9}
+.colophon .col ul{list-style:none}
+.colophon .signoff{grid-column:1 / span 12; padding-top:30px; border-top:1px solid var(--rule); margin-top:40px; display:flex; justify-content:space-between; align-items:flex-end}
+.colophon .signoff .deva{font-family:var(--deva); font-size:48px; color:var(--pink); line-height:1; letter-spacing:-.02em}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:1100px){
+  .home .meta{grid-column:1/span 12}
+  .home .strap{display:none}
+  .home .manifesto{grid-column:1/span 12}
+  .founders{grid-template-columns:repeat(2,1fr)}
+  .doodle-row{grid-template-columns:1fr}
+  .vm-vision, .vm-mission{grid-column:1 / span 12}
+  .vm-mission{margin-top:30px}
+  .problem-list .row{grid-template-columns:50px 180px 1fr}
+  .inter .moves{grid-template-columns:repeat(2,1fr)}
+  .philo .pillar{grid-column:span 12; margin:0 !important; transform:none !important}
+  .persona{grid-template-columns:1fr}
+  .persona .head{position:static}
+  .persona .body{grid-template-columns:1fr}
+  .psycho-cols{grid-template-columns:1fr 1fr}
+  .vpc .vp-card{grid-column:span 12}
+  .comp-table{grid-template-columns:1fr}
+  .comp-table .col-h, .comp-table > div{border-left:0}
+  .swot-grid, .tows-grid{grid-template-columns:1fr}
+  .swot-grid .h.col, .tows-grid .h.col{display:none}
+  .proto-card{grid-column:span 12}
+  .specs{grid-template-columns:1fr 1fr}
+  .pack-grid{grid-template-columns:1fr 1fr}
+  .ills-pair{grid-template-columns:1fr}
+  .ills-pair .layer.left{border-right:0; border-bottom:1px solid var(--rule-strong)}
+  .fivep{grid-template-columns:1fr 1fr}
+  .cost-derived{grid-template-columns:1fr}
+  .colophon .col{grid-column:span 6}
+}
+@media (max-width:600px){
+  .home .mark .latin{position:static; display:block; margin-top:14px; text-align:left}
+  .founders{grid-template-columns:1fr}
+  .pack-grid{grid-template-columns:1fr}
+  .psycho-cols{grid-template-columns:1fr}
+  .specs{grid-template-columns:1fr}
+  .fivep{grid-template-columns:1fr}
+}
+
+/* utility */
+.mt-0{margin-top:0}
+.mt-1{margin-top:10px}
+.mt-2{margin-top:20px}
+.mt-3{margin-top:40px}
+.mt-4{margin-top:60px}
+.mt-5{margin-top:90px}
+
+</style>
+</head>
+<body>
+
+<!-- ========== TOP BAR ========== -->
+<div class="topbar">
+  <div class="brand-mark">चोली<span>Choli · Est. 2026</span></div>
+  <button class="idx-toggle" id="idxBtn">Index / सूची</button>
+</div>
+
+<!-- ========== INDEX DRAWER ========== -->
+<aside class="idx" id="idx">
+  <button class="idx-close" id="idxClose">Close ✕</button>
+  <h4>Chapter Index</h4>
+  <ol>
+    <li><span class="deva-num">०१</span><a href="#home">Entry</a></li>
+    <li><span class="deva-num">०२</span><a href="#about">Who we are</a></li>
+    <li><span class="deva-num">०३</span><a href="#vision">Vision &amp; Mission</a></li>
+    <li><span class="deva-num">०४</span><a href="#problem">The Problem</a></li>
+    <li><span class="deva-num">०५</span><a href="#intervention">Our Intervention</a></li>
+    <li><span class="deva-num">०६</span><a href="#philosophy">Design Philosophy</a></li>
+    <li><span class="deva-num">०७</span><a href="#audience">Who it's for</a></li>
+    <li><span class="deva-num">०८</span><a href="#vpc">Value Proposition</a></li>
+    <li><span class="deva-num">०९</span><a href="#competitors">The Field</a></li>
+    <li><span class="deva-num">१०</span><a href="#swot">SWOT</a></li>
+    <li><span class="deva-num">११</span><a href="#tows">TOWS Matrix</a></li>
+    <li><span class="deva-num">१२</span><a href="#product">Prototype</a></li>
+    <li><span class="deva-num">१३</span><a href="#packaging">Packaging</a></li>
+    <li><span class="deva-num">१४</span><a href="#illustration">Illustration System</a></li>
+    <li><span class="deva-num">१५</span><a href="#marketing">Marketing</a></li>
+    <li><span class="deva-num">१६</span><a href="#cost">Cost Sheet</a></li>
+  </ol>
+  <p class="closing">A research archive · 2026</p>
+</aside>
+
+<!-- ========== HOME ========== -->
+<section id="home" class="page home">
+  <div class="meta">
+    <div><span class="pulse"></span>Currently in study · Spring '26</div>
+    <div style="margin-top:10px">A design research project on visible intimate wear · Chapters ०१–१६ below</div>
+  </div>
+
+  <div class="mark">
+    <div class="word">चोली</div>
+    <div class="latin">Choli<small>(noun, fem.) — the worn thing.</small></div>
+  </div>
+
+  <p class="manifesto">
+    A study in lingerie as a <em>primary garment</em> — not a hidden underlayer. Built around indigenous cotton, repairable architecture, and the <em>visibility of the strap</em> as a styling language.
+  </p>
+
+  <div class="footer-row">
+    <div class="scroll-cue">Begin reading</div>
+    <div>FD B · 4th Year · Mentor: Gaura Srivastava</div>
+    <div>Ashwini · Asmita · Daisy · Prakrutee</div>
+  </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section id="about" class="page chapter" data-num="०२" data-title="Who we are">
+  <div class="about-grid">
+    <div class="about-intro">
+      <h4 class="kicker">Chapter 02 · Identity</h4>
+      <h2 class="mt-2 italic">Four founders.<br/>Two visual layers.<br/>One narrative system.</h2>
+    </div>
+    <div class="about-aside">
+      <p>
+        The brand is built around translating its four founders into fictional illustrated personas. Not mascots — vehicles for a slowly accumulating archive of intimacy, humour, and shared experience.
+      </p>
+    </div>
+
+    <div class="founders">
+      <!-- founder 1: Prakrutee -->
+      <div class="founder">
+        <div class="ill">
+          <svg viewBox="0 0 130 200" width="100%" preserveAspectRatio="xMidYEnd meet" aria-hidden="true">
+            <!-- composed silhouette: bun, neck, shoulders, draped torso -->
+            <g fill="none" stroke="#9C1A55" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="65" cy="38" rx="20" ry="24"/>
+              <path d="M55 22 Q65 8 75 22"/>
+              <circle cx="60" cy="38" r="1.5" fill="#9C1A55"/>
+              <circle cx="72" cy="38" r="1.5" fill="#9C1A55"/>
+              <path d="M58 48 Q65 53 72 48"/>
+              <path d="M50 60 L40 80 L42 130 Q65 138 88 130 L90 80 L80 60"/>
+              <path d="M50 60 Q65 56 80 60"/>
+              <!-- visible strap detail -->
+              <path d="M52 70 L48 90" stroke="#9C1A55" stroke-width="2"/>
+              <path d="M78 70 L82 90" stroke="#9C1A55" stroke-width="2"/>
+              <path d="M48 90 Q65 95 82 90"/>
+              <!-- arms -->
+              <path d="M40 80 L34 130"/>
+              <path d="M90 80 L96 130"/>
+            </g>
+          </svg>
+        </div>
+        <div class="role">Founder · 01</div>
+        <div class="name"><span class="deva">प्र</span>krutee</div>
+        <div class="desc">Holds the system. Diagrams that breathe.</div>
+      </div>
+
+      <!-- founder 2: Asmita -->
+      <div class="founder">
+        <div class="ill">
+          <svg viewBox="0 0 130 200" width="100%" preserveAspectRatio="xMidYEnd meet" aria-hidden="true">
+            <g fill="none" stroke="#9C1A55" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <!-- side-parted long hair -->
+              <path d="M40 50 Q40 14 65 12 Q92 14 92 52 L88 100 L82 60"/>
+              <ellipse cx="65" cy="40" rx="18" ry="22" fill="#F0E8D9"/>
+              <circle cx="60" cy="40" r="1.5" fill="#9C1A55"/>
+              <circle cx="72" cy="40" r="1.5" fill="#9C1A55"/>
+              <path d="M58 50 Q65 54 72 50"/>
+              <path d="M48 62 L38 86 L42 130 Q65 138 88 130 L92 86 L82 62"/>
+              <!-- ties / soft straps -->
+              <path d="M52 68 L55 85 Q60 88 65 85 Q70 88 75 85 L78 68" stroke="#9C1A55" stroke-width="1.6"/>
+              <path d="M40 86 L34 130"/>
+              <path d="M92 86 L98 130"/>
+            </g>
+          </svg>
+        </div>
+        <div class="role">Founder · 02</div>
+        <div class="name"><span class="deva">अ</span>smita</div>
+        <div class="desc">Material custodian. Reads tags, asks twice.</div>
+      </div>
+
+      <!-- founder 3: Ashwini -->
+      <div class="founder">
+        <div class="ill">
+          <svg viewBox="0 0 130 200" width="100%" preserveAspectRatio="xMidYEnd meet" aria-hidden="true">
+            <g fill="none" stroke="#9C1A55" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <!-- short hair, frontal -->
+              <path d="M44 32 Q42 12 65 12 Q88 12 86 32 L82 50 L48 50 Z" fill="#9C1A55" stroke="none"/>
+              <ellipse cx="65" cy="42" rx="18" ry="22" fill="#F0E8D9"/>
+              <circle cx="60" cy="42" r="1.5" fill="#9C1A55"/>
+              <circle cx="72" cy="42" r="1.5" fill="#9C1A55"/>
+              <path d="M58 52 Q65 56 72 52"/>
+              <!-- visible cross-strap bra -->
+              <path d="M50 64 L44 90 L48 130 Q65 138 88 130 L92 90 L86 64"/>
+              <path d="M50 64 L70 88"/>
+              <path d="M86 64 L66 88"/>
+              <path d="M44 90 Q65 96 92 90"/>
+              <path d="M44 90 L36 130"/>
+              <path d="M92 90 L100 130"/>
+            </g>
+          </svg>
+        </div>
+        <div class="role">Founder · 03</div>
+        <div class="name"><span class="deva">अ</span>shwini</div>
+        <div class="desc">Layout instigator. Negative space evangelist.</div>
+      </div>
+
+      <!-- founder 4: Daisy -->
+      <div class="founder">
+        <div class="ill">
+          <svg viewBox="0 0 130 200" width="100%" preserveAspectRatio="xMidYEnd meet" aria-hidden="true">
+            <g fill="none" stroke="#9C1A55" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <!-- braided -->
+              <ellipse cx="65" cy="40" rx="20" ry="24"/>
+              <path d="M65 64 Q60 80 65 100 Q70 116 65 130"/>
+              <circle cx="60" cy="40" r="1.5" fill="#9C1A55"/>
+              <circle cx="72" cy="40" r="1.5" fill="#9C1A55"/>
+              <path d="M58 50 Q65 53 72 50"/>
+              <!-- triangle bra silhouette -->
+              <path d="M52 68 L40 86 L46 130 Q65 138 84 130 L90 86 L78 68"/>
+              <path d="M52 68 L65 86 L78 68"/>
+              <path d="M52 68 L48 56" stroke-width="2"/>
+              <path d="M78 68 L82 56" stroke-width="2"/>
+              <path d="M40 86 L34 130"/>
+              <path d="M90 86 L96 130"/>
+            </g>
+          </svg>
+        </div>
+        <div class="role">Founder · 04</div>
+        <div class="name"><span class="deva">डे</span>aisy</div>
+        <div class="desc">Doodle archivist. The chaos under the calm.</div>
+      </div>
+    </div>
+
+    <!-- doodle row: chaotic layer -->
+    <div class="doodle-row">
+      <div>
+        <div class="kicker label">The Intimate Layer</div>
+        <h3 class="mt-2">A doodle drawn during a shared outing — kept exactly as it was.</h3>
+      </div>
+      <div class="strip">
+        <!-- four doodled bras in different colors on dark bg -->
+        <svg viewBox="0 0 140 100" aria-hidden="true">
+          <g fill="none" stroke="#5C8DD6" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M30 30 Q70 22 110 30 L108 80 Q70 90 32 80 Z"/>
+            <path d="M30 30 L20 18"/>
+            <path d="M110 30 L120 18"/>
+            <path d="M40 70 Q70 78 100 70" stroke-dasharray="2 2"/>
+          </g>
+        </svg>
+        <svg viewBox="0 0 140 100" aria-hidden="true">
+          <g fill="none" stroke="#C7849A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M28 38 Q50 26 70 36 Q90 26 112 38 L108 64 Q90 72 70 64 Q50 72 32 64 Z"/>
+            <path d="M30 36 L40 88"/>
+            <path d="M110 36 L100 88"/>
+            <path d="M40 88 L100 88"/>
+            <path d="M50 30 Q70 22 90 30"/>
+          </g>
+        </svg>
+        <svg viewBox="0 0 140 100" aria-hidden="true">
+          <g fill="none" stroke="#6FA866" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M28 30 L40 22"/>
+            <path d="M112 30 L100 22"/>
+            <path d="M30 30 Q50 38 68 30 Q72 26 72 26 Q72 30 68 36 Q70 50 32 60 Z"/>
+            <path d="M110 30 Q90 38 72 30 L70 26 Q70 30 72 36 Q70 50 108 60 Z"/>
+            <circle cx="50" cy="44" r="1"/>
+            <circle cx="58" cy="50" r="1"/>
+            <circle cx="92" cy="44" r="1"/>
+            <circle cx="86" cy="50" r="1"/>
+          </g>
+        </svg>
+        <svg viewBox="0 0 140 100" aria-hidden="true">
+          <g fill="none" stroke="#A26C4F" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M30 36 Q50 28 70 38 Q90 28 110 36 L102 60 Q86 66 70 60 Q54 66 38 60 Z"/>
+            <path d="M40 36 L46 18"/>
+            <path d="M100 36 L94 18"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== VISION & MISSION ========== -->
+<section id="vision" class="page chapter" data-num="०३" data-title="Vision & Mission">
+  <div class="vm-grid">
+    <div class="vm-vision">
+      <h4 class="kicker">Chapter 03 · Vision</h4>
+      <h2 class="mt-2">A line of thought.</h2>
+      <p class="big mt-3">
+        To reposition lingerie from a concealed, disposable underlayer to a <em>visible</em>, <em>durable</em>, and <em>materially conscious</em> garment — rooted in indigenous cotton systems such as organic cotton and kala cotton.
+      </p>
+    </div>
+    <div class="vm-mission">
+      <h4 class="kicker">Mission</h4>
+      <ol>
+        <li><p>Develop a category of non-synthetic, repairable intimate wear using rain-fed, low-input fibres (kala cotton) and certified organic cotton.</p></li>
+        <li><p>Challenge the dominant aesthetic of invisibility in lingerie by legitimising the visibility of bra straps as a styling language.</p></li>
+        <li><p>Extend garment life cycles through design-for-repair frameworks: user manuals and brand-supported mending.</p></li>
+        <li><p>Embed craft practices (block printing) within contemporary intimate wear without reducing them to surface ornament.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROBLEM ========== -->
+<section id="problem" class="page chapter" data-num="०४" data-title="The Problem">
+  <div class="problem-grid">
+    <h4 class="kicker">Chapter 04</h4>
+    <h2>The waste arithmetic of intimate wear.</h2>
+    <div class="intro">
+      <p>Intimate wear is, by category, a disproportionately high-waste object. The reasons are not incidental. They are designed in.</p>
+    </div>
+
+    <div class="problem-list">
+      <div class="row">
+        <div class="n">०१</div>
+        <div class="term">Material complexity</div>
+        <div class="body">Polyester, nylon, and elastane blends — bonded, fused, layered. Once mixed, they cannot be unmixed for recycling.</div>
+      </div>
+      <div class="row">
+        <div class="n">०२</div>
+        <div class="term">Component hybridity</div>
+        <div class="body">Wires, hooks, elastics, sliders, foams. Six material families inside a single garment. None of them separate at end-of-life.</div>
+      </div>
+      <div class="row">
+        <div class="n">०३</div>
+        <div class="term">Low repairability</div>
+        <div class="body">Elastic fatigues; stitching is fine and concealed. The garment fails as a whole even when 80% of it is intact.</div>
+      </div>
+      <div class="row">
+        <div class="n">०४</div>
+        <div class="term">End-of-life barriers</div>
+        <div class="body">Hygiene constraints on resale. Mixed fibres reject recycling streams. Every used bra is a one-way object.</div>
+      </div>
+      <div class="row">
+        <div class="n">०५</div>
+        <div class="term">Landfill dependency</div>
+        <div class="body">The result: near-total dependency on landfill — with decomposition timelines measured in decades to centuries.</div>
+      </div>
+    </div>
+
+    <div class="decompose-bar">
+      <span>Cotton ~ 1 yr</span>
+      <span class="bar"><span class="marker" style="left:0"></span><span class="marker" style="left:8%; background:var(--ink)"></span><span class="marker" style="left:78%; background:var(--ink); opacity:.5"></span></span>
+      <span>Polyester ~ 200 yrs</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== INTERVENTION ========== -->
+<section id="intervention" class="page chapter" data-num="०५" data-title="Our Intervention">
+  <div class="inter">
+    <h4 class="kicker">Chapter 05</h4>
+    <h2>What we propose, instead.</h2>
+    <p class="lead">
+      Four moves, made together. Each one is small. Together, they re-organise the object.
+    </p>
+    <div class="moves">
+      <div class="move">
+        <div class="num">०१</div>
+        <h3>Mono / low-blend natural materials</h3>
+        <p>Kala cotton and certified organic cotton. Single-fibre constructions wherever possible — recyclable in principle, biodegradable in fact.</p>
+      </div>
+      <div class="move">
+        <div class="num">०२</div>
+        <h3>Simplified construction logic</h3>
+        <p>Fewer components. Soft structuring through cut, ties, and layering — not wires, not foams, not engineered compression.</p>
+      </div>
+      <div class="move">
+        <div class="num">०३</div>
+        <h3>Repairable architecture</h3>
+        <p>Modular components — straps, bands, cups separable where possible. Reinforced stress points. A construction that anticipates wear.</p>
+      </div>
+      <div class="move">
+        <div class="num">०४</div>
+        <h3>Extended use cycles</h3>
+        <p>A warranty-backed brand repair service. A printed care &amp; mend manual. Garments designed to age, not to expire.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DESIGN PHILOSOPHY ========== -->
+<section id="philosophy" class="page chapter" data-num="०६" data-title="Design Philosophy">
+  <div class="philo">
+    <h4 class="kicker">Chapter 06</h4>
+    <h2 class="italic">Three positions.</h2>
+
+    <div class="pillar">
+      <span class="pn">Pillar 01</span>
+      <h3>Visibility as intent</h3>
+      <p>Straps are designed to be seen, not hidden. Lingerie operates as a layered garment, not a base layer. Visibility is not exhibitionism — it is a refusal of the inherited shame around intimate construction.</p>
+      <div class="quote">"Show them straps."<em>Garment autonomy through visibility.</em></div>
+    </div>
+
+    <div class="pillar">
+      <span class="pn">Pillar 02</span>
+      <h3>Anti-synthetic construction</h3>
+      <p>No elastane-heavy dependency. Fabric-led support rather than engineered compression. Soft structuring through cut, ties, and layering — not wires.</p>
+      <p class="muted">A bra that holds because it is well cut, not because it is well engineered.</p>
+    </div>
+
+    <div class="pillar">
+      <span class="pn">Pillar 03</span>
+      <h3>Repairability as ethic</h3>
+      <p>Modular components. Reinforced stress points. A printed manual. A repair service backed by warranty.</p>
+      <p>Repair becomes both functional and emotional — an extension of attachment, a practice of care.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== AUDIENCE ========== -->
+<section id="audience" class="page chapter" data-num="०७" data-title="Who it's for">
+  <div class="aud">
+    <h4 class="kicker">Chapter 07</h4>
+    <h2>The reader of labels.</h2>
+    <p class="lead">Choli is built for the woman who treats clothing as both a personal language and a political position. She is not seeking lingerie. She is seeking a garment.</p>
+
+    <div class="persona">
+      <div class="head">
+        <div class="kicker" style="margin-bottom:14px">Primary persona</div>
+        <div class="pname">Aarya <em>Mehta</em></div>
+        <div class="pmeta">
+          <div><b>Age</b>25</div>
+          <div><b>Income</b>₹22 LPA</div>
+          <div><b>City</b>Bombay · Bangalore · Delhi</div>
+          <div><b>Role</b>UX Designer, tech startup</div>
+          <div><b>Edu.</b>Bachelor's in Design</div>
+        </div>
+      </div>
+      <div class="body">
+        <div class="group">
+          <h4>Emotional needs</h4>
+          <ul>
+            <li>To feel comfortable but still styled.</li>
+            <li>To feel aligned with her values without compromising aesthetics.</li>
+            <li>To own pieces that feel personal, not mass-produced.</li>
+            <li>To engage in care rituals — repair, preservation.</li>
+            <li>To avoid the waste-guilt of disposability.</li>
+          </ul>
+        </div>
+        <div class="group">
+          <h4>Functional needs</h4>
+          <ul>
+            <li>Breathable fabrics suited for hot, humid climates.</li>
+            <li>Non-synthetic or low-synthetic material composition.</li>
+            <li>Wire-free support with structured design.</li>
+            <li>Garments that work in dual contexts — under and as.</li>
+            <li>Durability, repairability, clear care manuals.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="psycho">
+      <h4 class="kicker">Texture of the audience</h4>
+      <div class="psycho-cols">
+        <div class="col">
+          <h5>Psychographics</h5>
+          <ul>
+            <li>Values material honesty over branding.</li>
+            <li>Actively questions fast-fashion systems.</li>
+            <li>Seeks function + ideology alignment.</li>
+            <li>Engages with design as discourse, not just consumption.</li>
+            <li>Comfortable with non-sexualised body expression.</li>
+            <li>Prefers understated, intelligent aesthetics.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h5>Lifestyle</h5>
+          <ul>
+            <li>Shops from independent / niche labels.</li>
+            <li>Mixes contemporary + craft-based clothing.</li>
+            <li>Engages in slow rituals — repair, care, reuse.</li>
+            <li>Consumes design / media critically.</li>
+            <li>Attends exhibitions, pop-ups, concept stores.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h5>Behavioural traits</h5>
+          <ul>
+            <li>Will pay a premium for material + philosophy.</li>
+            <li>Reads labels; asks questions about fabric &amp; sourcing.</li>
+            <li>Keeps garments longer if repair is possible.</li>
+            <li>Avoids mass brands unless necessary.</li>
+            <li>Adopts products that offer systems, not just objects.</li>
+          </ul>
+        </div>
+        <div class="col">
+          <h5>Pain points</h5>
+          <ul>
+            <li>Synthetic lingerie causing sweating, irritation.</li>
+            <li>Lack of repair options; elastic fatigue.</li>
+            <li>Poor lifespan → frequent replacement cycles.</li>
+            <li>Cultural conditioning to hide lingerie elements.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== VPC ========== -->
+<section id="vpc" class="page chapter" data-num="०८" data-title="Value Proposition">
+  <div class="vpc">
+    <h4 class="kicker">Chapter 08</h4>
+    <h2>Value Proposition Canvas.</h2>
+
+    <div class="vp-card">
+      <div class="shape">अ</div>
+      <h3>Customer Profile — Aarya</h3>
+
+      <div class="block">
+        <h4>Jobs to be done</h4>
+        <ul>
+          <li>Dress comfortably for humid climates without compromising values.</li>
+          <li>Express identity through everyday objects.</li>
+          <li>Buy fewer, better, longer-lived intimate wear.</li>
+        </ul>
+      </div>
+      <div class="block">
+        <h4>Pains</h4>
+        <ul>
+          <li>Synthetic discomfort, irritation.</li>
+          <li>Disposability, repair anxiety.</li>
+          <li>Cultural pressure to hide intimate construction.</li>
+        </ul>
+      </div>
+      <div class="block">
+        <h4>Gains</h4>
+        <ul>
+          <li>Garments that age into character.</li>
+          <li>Membership in a slow, considered material world.</li>
+          <li>Permission to make the strap visible.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="vp-card right">
+      <div class="shape">च</div>
+      <h3>Value Map — Choli</h3>
+
+      <div class="block">
+        <h4>Products &amp; services</h4>
+        <ul>
+          <li>Wire-free knitted-cotton bras.</li>
+          <li>Modular fabric packaging that becomes a tote.</li>
+          <li>Warranty-backed repair service.</li>
+          <li>Printed care + mend manuals.</li>
+        </ul>
+      </div>
+      <div class="block">
+        <h4>Pain relievers</h4>
+        <ul>
+          <li>Mono-fibre, breathable construction.</li>
+          <li>Reinforced stress points; replaceable straps.</li>
+          <li>Visibility framed as styling, not exposure.</li>
+        </ul>
+      </div>
+      <div class="block">
+        <h4>Gain creators</h4>
+        <ul>
+          <li>Indigenous cotton story — kala cotton.</li>
+          <li>Block-printed patterning rooted in craft.</li>
+          <li>An evolving illustrated archive to belong to.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="vpc-fit">
+      <h4>Product–Audience Fit</h4>
+      <p>Choli answers Aarya's question — "<em>how do I dress my body in a way that matches the rest of my world?</em>" — with a garment, a system, and a story.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== COMPETITORS ========== -->
+<section id="competitors" class="page chapter" data-num="०९" data-title="The Field">
+  <div class="comp">
+    <h4 class="kicker">Chapter 09</h4>
+    <h2>Where we stand.</h2>
+    <p class="lead">India's organic intimate-wear category is small but instructive. Two reference points clarify the gap Choli enters into.</p>
+
+    <div class="comp-table">
+      <div class="row-h"></div>
+      <div class="col-h">Inner Sense<sub>Bengaluru · 2016</sub></div>
+      <div class="col-h">Maayu<sub>India · 2020s</sub></div>
+      <div class="col-h us">Choli<sub>Est. 2026</sub></div>
+
+      <div class="row-h">Positioning</div>
+      <div>India's early organic-lingerie pioneer.</div>
+      <div>100% organic-cotton underwear; no spandex, no dyes.</div>
+      <div class="strength">Visible lingerie as primary garment.</div>
+
+      <div class="row-h">Material</div>
+      <div>Organic cotton + bamboo viscose blends.</div>
+      <div>GOTS-certified organic cotton.</div>
+      <div class="strength">Kala cotton + organic cotton, mono-blend logic.</div>
+
+      <div class="row-h">Design proposition</div>
+      <div>Comfort and skin-health.</div>
+      <div>Function-only; basics.</div>
+      <div class="strength">Strap visibility · craft · system design.</div>
+
+      <div class="row-h">System</div>
+      <div>Conventional retail.</div>
+      <div>Plastic-free packaging.</div>
+      <div class="strength">Repair service · modular packaging · manuals.</div>
+
+      <div class="row-h">Limitation</div>
+      <div class="limit">Still relies on performance blends; doesn't challenge visibility norms.</div>
+      <div class="limit">No design language; no styling proposition.</div>
+      <div class="limit" style="color:var(--pink);font-style:normal">Requires behavioural shift — and that is the project.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SWOT ========== -->
+<section id="swot" class="page chapter" data-num="१०" data-title="SWOT">
+  <div class="swot">
+    <h4 class="kicker">Chapter 10</h4>
+    <h2>SWOT — internal &amp; external.</h2>
+
+    <div class="swot-grid mt-3">
+      <div class="h"></div>
+      <div class="h col pos">Positive</div>
+      <div class="h col neg">Negative</div>
+
+      <div class="h">Product / Material</div>
+      <div class="cell">
+        <ul>
+          <li>Kala cotton (rain-fed, low-input) + organic cotton.</li>
+          <li>Fully non-synthetic, skin-safe material system.</li>
+          <li>Strong differentiation from conventional cotton lingerie.</li>
+        </ul>
+      </div>
+      <div class="cell neg">
+        <ul>
+          <li>Lack of elastane limits stretch + recovery.</li>
+          <li>Fit inconsistencies across sizes.</li>
+          <li>Lower structural support vs. mainstream bras.</li>
+        </ul>
+      </div>
+
+      <div class="h">Design / Concept</div>
+      <div class="cell">
+        <ul>
+          <li>Clear concept: visible lingerie (strap as design).</li>
+          <li>Moves beyond comfort → cultural / aesthetic intervention.</li>
+          <li>Distinct niche positioning.</li>
+        </ul>
+      </div>
+      <div class="cell neg">
+        <ul>
+          <li>Concept may feel socially unconventional.</li>
+          <li>Requires behavioural shift from users.</li>
+          <li>Not immediately mass-acceptable.</li>
+        </ul>
+      </div>
+
+      <div class="h">System / Innovation</div>
+      <div class="cell">
+        <ul>
+          <li>Repairable lingerie system (manual + service).</li>
+          <li>Extends lifecycle → aligns with circular design.</li>
+          <li>Rare in lingerie category.</li>
+        </ul>
+      </div>
+      <div class="cell neg">
+        <ul>
+          <li>Repair adoption is not habitual.</li>
+          <li>Users may ignore manuals.</li>
+          <li>Requires additional education effort.</li>
+        </ul>
+      </div>
+
+      <div class="h">Production / Business</div>
+      <div class="cell">
+        <ul>
+          <li>Integration of block printing + craft clusters.</li>
+          <li>Ethical sourcing potential.</li>
+          <li>Strong storytelling value.</li>
+        </ul>
+      </div>
+      <div class="cell neg">
+        <ul>
+          <li>Higher production costs.</li>
+          <li>Limited scalability.</li>
+          <li>Longer production timelines.</li>
+        </ul>
+      </div>
+
+      <div class="h">Market trends</div>
+      <div class="cell">
+        <ul>
+          <li>Growing demand for sustainable + natural fibres.</li>
+          <li>Shift toward comfort / wire-free lingerie.</li>
+          <li>Rise of indie D2C brands.</li>
+        </ul>
+      </div>
+      <div class="cell neg">
+        <ul>
+          <li>Fast-fashion brands replicating aesthetics.</li>
+          <li>Price sensitivity in Indian market.</li>
+          <li>Dominance of established lingerie brands.</li>
+        </ul>
+      </div>
+
+      <div class="h">Cultural context</div>
+      <div class="cell">
+        <ul>
+          <li>Body autonomy &amp; visibility movements.</li>
+          <li>Acceptance of non-sexualised sensuality.</li>
+        </ul>
+      </div>
+      <div class="cell neg">
+        <ul>
+          <li>Cultural conservatism around visible lingerie.</li>
+          <li>Risk of slow adoption.</li>
+        </ul>
+      </div>
+
+      <div class="h">Consumer behaviour</div>
+      <div class="cell">
+        <ul>
+          <li>Increasing awareness of ethical consumption.</li>
+          <li>Emerging interest in repair / upcycling.</li>
+        </ul>
+      </div>
+      <div class="cell neg">
+        <ul>
+          <li>Repair perceived as inconvenient.</li>
+          <li>Disposable mindset still dominant.</li>
+        </ul>
+      </div>
+
+      <div class="h">Industry practice</div>
+      <div class="cell">
+        <ul>
+          <li>Opportunity to lead in repairable lingerie.</li>
+          <li>Space to define new transparency standards.</li>
+        </ul>
+      </div>
+      <div class="cell neg">
+        <ul>
+          <li>Greenwashing by competitors.</li>
+          <li>Misleading "cotton" claims by large brands.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TOWS ========== -->
+<section id="tows" class="page chapter" data-num="११" data-title="TOWS Matrix">
+  <div class="tows">
+    <h4 class="kicker">Chapter 11</h4>
+    <h2>TOWS — turning analysis into action.</h2>
+    <p class="lead">SWOT identifies. TOWS prescribes. Each quadrant is a rule we are building the company against.</p>
+
+    <div class="tows-grid">
+      <div class="h"></div>
+      <div class="h col">Opportunities (O)</div>
+      <div class="h col">Threats (T)</div>
+
+      <div class="h">Strengths (S)</div>
+      <div class="cell">
+        <div class="label">SO · use strengths to maximise opportunities</div>
+        <ul>
+          <li>Position as the category-defining brand for visible lingerie before competitors enter.</li>
+          <li>Use kala cotton + organic sourcing to build material literacy and trust.</li>
+          <li>Expand repair into community-led engagement — workshops, content, exhibitions.</li>
+        </ul>
+      </div>
+      <div class="cell">
+        <div class="label">ST · use strengths to counter threats</div>
+        <ul>
+          <li>Differentiate through system (repair + material), not just aesthetic.</li>
+          <li>Use radical transparency to counter greenwashing.</li>
+          <li>Frame repair as resistance to lingerie disposability culture.</li>
+        </ul>
+      </div>
+
+      <div class="h">Weaknesses (W)</div>
+      <div class="cell">
+        <div class="label">WO · use opportunities to overcome weaknesses</div>
+        <ul>
+          <li>Reframe lack of stretch as adjustable / tie-based design innovation.</li>
+          <li>Educate users to normalise repair behaviour.</li>
+          <li>Target early adopters (urban, design-aware) instead of mass market.</li>
+        </ul>
+      </div>
+      <div class="cell">
+        <div class="label">WT · minimise weaknesses, avoid threats</div>
+        <ul>
+          <li>Maintain controlled scale to ensure quality and fit.</li>
+          <li>Introduce minimal hybrid material (if needed) without diluting core claim.</li>
+          <li>Justify pricing via cost-per-wear + longevity narrative.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PRODUCT / PROTOTYPE ========== -->
+<section id="product" class="page chapter" data-num="१२" data-title="Prototype">
+  <div class="product">
+    <h4 class="kicker">Chapter 12</h4>
+    <h2 class="italic">The first object.</h2>
+    <p class="lead">A wire-free, knitted-cotton bra. Hook-and-eye closure, soft padding, visible straps. Three views, three logics.</p>
+
+    <div class="proto-grid">
+      <div class="proto-card">
+        <div class="lbl">View · 01 / Front</div>
+        <div class="ill">
+          <svg viewBox="0 0 220 280" width="220" height="280" aria-hidden="true">
+            <g fill="none" stroke="#9C1A55" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <!-- straps -->
+              <path d="M48 18 L62 110"/>
+              <path d="M172 18 L158 110"/>
+              <!-- bra cups -->
+              <path d="M40 110 Q70 90 110 110 Q150 90 180 110"/>
+              <path d="M40 110 Q50 145 110 145 Q170 145 180 110"/>
+              <!-- under band -->
+              <path d="M30 145 L30 175 L190 175 L190 145"/>
+              <path d="M40 110 L30 145"/>
+              <path d="M180 110 L190 145"/>
+              <!-- center detail -->
+              <path d="M110 110 L110 145"/>
+              <circle cx="110" cy="125" r="2.5"/>
+              <!-- block-print decoration -->
+              <circle cx="62" cy="122" r="1.4"/>
+              <circle cx="78" cy="132" r="1.4"/>
+              <circle cx="142" cy="132" r="1.4"/>
+              <circle cx="158" cy="122" r="1.4"/>
+              <!-- side seam -->
+              <path d="M30 158 L30 175" stroke-dasharray="3 3"/>
+              <path d="M190 158 L190 175" stroke-dasharray="3 3"/>
+            </g>
+          </svg>
+        </div>
+        <h3>Front</h3>
+        <p>Visible straps, soft cup line, no underwire. Knitted-cotton structure provides natural stretch + recovery without elastane dependency.</p>
+      </div>
+
+      <div class="proto-card">
+        <div class="lbl">View · 02 / Back</div>
+        <div class="ill">
+          <svg viewBox="0 0 220 280" width="220" height="280" aria-hidden="true">
+            <g fill="none" stroke="#9C1A55" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M48 18 L62 130"/>
+              <path d="M172 18 L158 130"/>
+              <!-- back band rectangle -->
+              <rect x="40" y="130" width="140" height="40" rx="2"/>
+              <!-- hooks column -->
+              <line x1="60" y1="138" x2="60" y2="162"/>
+              <circle cx="60" cy="142" r="2"/>
+              <circle cx="60" cy="150" r="2"/>
+              <circle cx="60" cy="158" r="2"/>
+              <!-- eye column -->
+              <line x1="160" y1="138" x2="160" y2="162"/>
+              <rect x="156" y="140" width="8" height="4"/>
+              <rect x="156" y="148" width="8" height="4"/>
+              <rect x="156" y="156" width="8" height="4"/>
+              <!-- adjusters -->
+              <rect x="56" y="60" width="12" height="14"/>
+              <rect x="152" y="60" width="12" height="14"/>
+              <!-- seam markers -->
+              <path d="M40 175 L70 200" stroke-dasharray="3 3"/>
+              <path d="M180 175 L150 200" stroke-dasharray="3 3"/>
+            </g>
+          </svg>
+        </div>
+        <h3>Back</h3>
+        <p>Hook-and-eye closure, multiple settings. Adjustable strap sliders. Stress points reinforced for repair-readiness.</p>
+      </div>
+
+      <div class="proto-card">
+        <div class="lbl">View · 03 / Hook detail</div>
+        <div class="ill">
+          <svg viewBox="0 0 220 280" width="220" height="280" aria-hidden="true">
+            <g fill="none" stroke="#9C1A55" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <!-- enlarged hook -->
+              <rect x="60" y="80" width="100" height="120" rx="2"/>
+              <!-- left band fabric -->
+              <path d="M30 110 L60 110"/>
+              <path d="M30 130 L60 130"/>
+              <path d="M30 150 L60 150"/>
+              <path d="M30 170 L60 170"/>
+              <!-- hooks (3) -->
+              <path d="M75 100 q0 -8 8 -8 q8 0 8 8 v6"/>
+              <path d="M75 130 q0 -8 8 -8 q8 0 8 8 v6"/>
+              <path d="M75 160 q0 -8 8 -8 q8 0 8 8 v6"/>
+              <!-- eye loops (3) -->
+              <ellipse cx="135" cy="105" rx="9" ry="4"/>
+              <ellipse cx="135" cy="135" rx="9" ry="4"/>
+              <ellipse cx="135" cy="165" rx="9" ry="4"/>
+              <!-- right band fabric -->
+              <path d="M160 110 L190 110"/>
+              <path d="M160 130 L190 130"/>
+              <path d="M160 150 L190 150"/>
+              <path d="M160 170 L190 170"/>
+              <!-- callouts -->
+              <text x="20" y="225" fill="#9C1A55" font-family="JetBrains Mono" font-size="9" letter-spacing="1.5">3-LEVEL · MULTI-SIZE</text>
+              <text x="20" y="240" fill="#9C1A55" font-family="JetBrains Mono" font-size="9" letter-spacing="1.5" opacity="0.6">SEPARABLE · REPLACE</text>
+            </g>
+          </svg>
+        </div>
+        <h3>Hook detail</h3>
+        <p>Standard 3-row hook closure, sourced for replaceability. The closure can be removed and re-stitched without compromising the cup or band.</p>
+      </div>
+
+      <div class="specs">
+        <div class="item">
+          <h4 class="kicker">Material</h4>
+          <p>Kala cotton outer · organic cotton lining · cotton thread.</p>
+        </div>
+        <div class="item">
+          <h4 class="kicker">Closure</h4>
+          <p>Hook-and-eye, three-row standard. Adjuster sliders.</p>
+        </div>
+        <div class="item">
+          <h4 class="kicker">Support</h4>
+          <p>Soft padding · knitted structure · no underwire.</p>
+        </div>
+        <div class="item">
+          <h4 class="kicker">Repair points</h4>
+          <p>Strap join · band seam · cup edge · closure.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PACKAGING ========== -->
+<section id="packaging" class="page chapter" data-num="१३" data-title="Packaging">
+  <div class="pack">
+    <h4 class="kicker">Chapter 13</h4>
+    <h2 class="italic">Packaging that refuses to be packaging.</h2>
+    <p class="lead">A modular fabric system — made from upcycled textile waste — that converts, through folds and buttons, into four utility forms. Single-use becomes long-use.</p>
+
+    <div class="pack-grid">
+      <div class="pack-card">
+        <div class="num">०१</div>
+        <div class="ill">
+          <svg viewBox="0 0 200 200" width="180" height="180" aria-hidden="true">
+            <g fill="none" stroke="#C7849A" stroke-width="1.5" stroke-linecap="round">
+              <path d="M50 60 L150 60 L155 170 L45 170 Z"/>
+              <path d="M70 60 Q70 30 100 30 Q130 30 130 60"/>
+              <line x1="50" y1="80" x2="150" y2="80" stroke-dasharray="2 4"/>
+              <circle cx="60" cy="170" r="3"/>
+              <circle cx="140" cy="170" r="3"/>
+            </g>
+          </svg>
+        </div>
+        <h3>Shopping bag</h3>
+        <p>Loops + buttons along the edges secure all corners.</p>
+      </div>
+      <div class="pack-card">
+        <div class="num">०२</div>
+        <div class="ill">
+          <svg viewBox="0 0 200 200" width="180" height="180" aria-hidden="true">
+            <g fill="none" stroke="#C7849A" stroke-width="1.5" stroke-linecap="round">
+              <rect x="50" y="60" width="100" height="110" rx="2"/>
+              <line x1="50" y1="90" x2="150" y2="90"/>
+              <line x1="50" y1="120" x2="150" y2="120"/>
+              <line x1="50" y1="150" x2="150" y2="150"/>
+              <circle cx="60" cy="75" r="3"/>
+              <circle cx="140" cy="75" r="3"/>
+              <path d="M75 55 Q100 40 125 55" stroke-dasharray="3 3"/>
+            </g>
+          </svg>
+        </div>
+        <h3>Mini organiser</h3>
+        <p>Tuck the handle inside; secure the corners.</p>
+      </div>
+      <div class="pack-card">
+        <div class="num">०३</div>
+        <div class="ill">
+          <svg viewBox="0 0 200 200" width="180" height="180" aria-hidden="true">
+            <g fill="none" stroke="#C7849A" stroke-width="1.5" stroke-linecap="round">
+              <rect x="40" y="80" width="120" height="80" rx="6"/>
+              <line x1="40" y1="110" x2="160" y2="110" stroke-dasharray="3 3"/>
+              <line x1="40" y1="135" x2="160" y2="135" stroke-dasharray="3 3"/>
+              <circle cx="100" cy="80" r="6"/>
+              <path d="M94 80 Q100 65 106 80"/>
+              <circle cx="55" cy="160" r="3"/>
+              <circle cx="145" cy="160" r="3"/>
+            </g>
+          </svg>
+        </div>
+        <h3>Tiffin bag</h3>
+        <p>Place tiffin; button up the edges.</p>
+      </div>
+      <div class="pack-card">
+        <div class="num">०४</div>
+        <div class="ill">
+          <svg viewBox="0 0 200 200" width="180" height="180" aria-hidden="true">
+            <g fill="none" stroke="#C7849A" stroke-width="1.5" stroke-linecap="round">
+              <rect x="60" y="80" width="80" height="100" rx="4"/>
+              <line x1="60" y1="110" x2="140" y2="110"/>
+              <path d="M75 80 Q100 60 125 80"/>
+              <circle cx="68" cy="178" r="3"/>
+              <circle cx="132" cy="178" r="3"/>
+            </g>
+          </svg>
+        </div>
+        <h3>Mini bag</h3>
+        <p>Fold to a rectangle, align the edges.</p>
+      </div>
+    </div>
+
+    <div class="pack-note">
+      <div>
+        <h4 class="kicker">QR · scan to transform</h4>
+        <p>An illustrated manual guides the user through every fold. The packaging stops being packaging within minutes of arrival.</p>
+      </div>
+      <div>
+        <h4 class="kicker">Why it matters</h4>
+        <p>Packaging is the part of fashion that has the shortest life and the highest waste. Re-engineering it changes the whole arrival ritual — and removes a category of disposable from the customer's home.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ILLUSTRATION SYSTEM ========== -->
+<section id="illustration" class="page chapter" data-num="१४" data-title="Illustration System">
+  <div class="ills">
+    <h4 class="kicker">Chapter 14</h4>
+    <h2 class="italic">A visual world in two registers.</h2>
+    <p class="lead">The brand sits between two illustration languages, used together by intention. They contradict each other — and that is precisely the work.</p>
+
+    <div class="ills-pair">
+      <div class="layer left">
+        <div class="lbl">Layer A · Composed</div>
+        <h3>Refined cultural illustration</h3>
+        <p>Drawn from traditional Indian feminine illustration: poised figures, controlled linework, stylised features, a sense of stillness. The composed self.</p>
+        <p class="muted">Used for: brand mark, hero imagery, founder personas, product editorial.</p>
+        <div class="show">
+          <svg viewBox="0 0 240 200" width="220" aria-hidden="true">
+            <g fill="none" stroke="#9C1A55" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="120" cy="55" rx="28" ry="34"/>
+              <path d="M105 28 Q120 8 135 28"/>
+              <circle cx="112" cy="55" r="2" fill="#9C1A55"/>
+              <circle cx="128" cy="55" r="2" fill="#9C1A55"/>
+              <path d="M110 70 Q120 76 130 70"/>
+              <path d="M92 90 L78 130 L82 200 L158 200 L162 130 L148 90"/>
+              <path d="M92 90 Q120 84 148 90"/>
+              <path d="M96 102 L92 130" stroke-width="2"/>
+              <path d="M144 102 L148 130" stroke-width="2"/>
+              <path d="M92 130 Q120 138 148 130"/>
+              <!-- block-print pattern dots -->
+              <circle cx="100" cy="160" r="1.6"/>
+              <circle cx="120" cy="170" r="1.6"/>
+              <circle cx="140" cy="160" r="1.6"/>
+              <circle cx="110" cy="180" r="1.6"/>
+              <circle cx="130" cy="180" r="1.6"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="layer right">
+        <div class="lbl">Layer B · Chaotic</div>
+        <h3>Doodle-archive style</h3>
+        <p>An archive of instinctive marks — the kind made on a napkin, with friends. Uneven lines, exaggerated proportions, unselfconscious. The private self.</p>
+        <p class="muted">Used for: packaging interiors, repair-manual illustrations, social, the founder doodle archive.</p>
+        <div class="show">
+          <svg viewBox="0 0 240 200" width="220" aria-hidden="true">
+            <g fill="none" stroke="#C7849A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M40 60 L48 28"/>
+              <path d="M200 60 L192 28"/>
+              <path d="M40 60 Q60 80 90 64 Q100 60 100 60 Q100 64 90 70 Q80 90 40 100 Z"/>
+              <path d="M200 60 Q180 80 150 64 Q142 60 140 60 Q140 64 150 70 Q160 90 200 100 Z"/>
+              <circle cx="60" cy="78" r="1.4"/>
+              <circle cx="74" cy="84" r="1.4"/>
+              <circle cx="180" cy="78" r="1.4"/>
+              <circle cx="166" cy="84" r="1.4"/>
+              <path d="M50 110 Q120 130 190 110" stroke-dasharray="3 3"/>
+              <text x="115" y="170" fill="#C7849A" font-family="JetBrains Mono" font-size="9" text-anchor="middle" opacity="0.6">drawn between us</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="intersect">
+      The composed and the chaotic are not in conflict. They are both true — and the tension between them is where Choli actually lives.
+    </div>
+  </div>
+</section>
+
+<!-- ========== MARKETING ========== -->
+<section id="marketing" class="page chapter" data-num="१५" data-title="Marketing">
+  <div class="mark5">
+    <h4 class="kicker">Chapter 15</h4>
+    <h2 class="italic">Marketing as discourse, not performance.</h2>
+    <p class="lead">No paid funnel optimisation. The work is to build a community around a question, not push product through pipes.</p>
+
+    <div class="fivep">
+      <div class="p">
+        <div class="letter">प्र</div>
+        <h4 class="kicker">Product</h4>
+        <ul>
+          <li>Wire-free, knitted-cotton support.</li>
+          <li>Strap as a styling element.</li>
+          <li>Kala + organic cotton — breathable, durable.</li>
+          <li>Repair-based warranty.</li>
+          <li>Modular fabric packaging.</li>
+        </ul>
+      </div>
+      <div class="p">
+        <div class="letter">मू</div>
+        <h4 class="kicker">Price</h4>
+        <ul>
+          <li>Premium, value-based pricing.</li>
+          <li>Higher than mass lingerie (₹800–₹2,000).</li>
+          <li>On par with premium sustainable peers.</li>
+          <li>Justified via material + repair ecosystem.</li>
+          <li>Range: <b style="color:var(--pink)">₹3,100–₹3,300</b>.</li>
+        </ul>
+      </div>
+      <div class="p">
+        <div class="letter">स्थ</div>
+        <h4 class="kicker">Place</h4>
+        <ul>
+          <li>D2C website for full storytelling.</li>
+          <li>Curated stockists (e.g. Good Earth).</li>
+          <li>Made-to-order / small-batch production.</li>
+          <li>Repair as after-sales engagement.</li>
+          <li>Urban design-conscious markets.</li>
+        </ul>
+      </div>
+      <div class="p">
+        <div class="letter">प्र</div>
+        <h4 class="kicker">Promotion</h4>
+        <ul>
+          <li>Concept-led visuals · illustrated identity.</li>
+          <li>PR around repair + anti-synthetic.</li>
+          <li>Instagram + website primary.</li>
+          <li>Pop-ups: Lil Flea, Raw Collaborative.</li>
+          <li>Design-led retail environments.</li>
+        </ul>
+      </div>
+      <div class="p">
+        <div class="letter">ज</div>
+        <h4 class="kicker">People</h4>
+        <ul>
+          <li>The community of repair.</li>
+          <li>The reader of labels.</li>
+          <li>The illustrator.</li>
+          <li>The block-print cluster.</li>
+          <li>The four founders.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="message">
+      <div class="lbl">Brand message</div>
+      <div class="slogan">Show them straps.</div>
+      <div class="deva-tag">पट्टी दिखाओ ·  visibility as styling</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== COST SHEET ========== -->
+<section id="cost" class="page chapter" data-num="१६" data-title="Cost Sheet">
+  <div class="cost">
+    <h4 class="kicker">Chapter 16</h4>
+    <h2>Cost sheet — single bra, new construction.</h2>
+    <p class="lead">A clean, transparent build. No hidden material lines. The repair system is part of the cost, not an add-on.</p>
+
+    <div class="cost-table">
+      <div class="row"><div class="cell lbl">Fabric (kala + organic cotton)</div><div class="cell r">₹ 200</div></div>
+      <div class="row"><div class="cell lbl">Pads</div><div class="cell r">₹ 55</div></div>
+      <div class="row"><div class="cell lbl">Trims</div><div class="cell r">₹ 55</div></div>
+      <div class="row"><div class="cell lbl">Strap fabric</div><div class="cell r">₹ 40</div></div>
+      <div class="row"><div class="cell lbl">Block printing</div><div class="cell r">₹ 110</div></div>
+      <div class="row"><div class="cell lbl">CM (cut + make)</div><div class="cell r">₹ 290</div></div>
+      <div class="row"><div class="cell lbl">Packaging (modular fabric)</div><div class="cell r">₹ 75</div></div>
+      <div class="row"><div class="cell lbl">Sampling</div><div class="cell r">₹ 30</div></div>
+      <div class="row"><div class="cell lbl">Wastage</div><div class="cell r">₹ 60</div></div>
+      <div class="row"><div class="cell lbl">Repair system allocation</div><div class="cell r">₹ 25</div></div>
+      <div class="row total"><div class="cell lbl">Cost Price (CP)</div><div class="cell r">₹ 940</div></div>
+      <div class="row grand"><div class="cell lbl">Selling Price (CP ÷ 0.30)</div><div class="cell r">₹ 3,133</div></div>
+    </div>
+
+    <div class="cost-derived">
+      <div class="box">
+        <div class="l">Cost Price</div>
+        <div class="v">₹940</div>
+      </div>
+      <div class="box">
+        <div class="l">Selling Price</div>
+        <div class="v">₹3,133</div>
+      </div>
+      <div class="box">
+        <div class="l">Retail Range</div>
+        <div class="v">₹3,100–3,300</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== COLOPHON ========== -->
+<footer class="page colophon">
+  <div class="col">
+    <h5>Choli</h5>
+    <p>A design research project on visible intimate wear.<br/>Spring '26.</p>
+  </div>
+  <div class="col">
+    <h5>Founders</h5>
+    <ul>
+      <li>Ashwini</li>
+      <li>Asmita</li>
+      <li>Daisy</li>
+      <li>Prakrutee</li>
+    </ul>
+  </div>
+  <div class="col">
+    <h5>Course</h5>
+    <p>Fashion · Business Study<br/>FD B · 4th Year</p>
+  </div>
+  <div class="col">
+    <h5>Mentor</h5>
+    <p>Gaura Srivastava</p>
+  </div>
+  <div class="signoff">
+    <div>© Choli, 2026 · this is a research archive, not a shop.</div>
+    <div class="deva">चोली</div>
+  </div>
+</footer>
+
+<script>
+  // index drawer
+  const idxBtn = document.getElementById('idxBtn');
+  const idxClose = document.getElementById('idxClose');
+  const idx = document.getElementById('idx');
+  const open = () => idx.classList.add('open');
+  const close = () => idx.classList.remove('open');
+  idxBtn.addEventListener('click', open);
+  idxClose.addEventListener('click', close);
+  idx.addEventListener('click', (e) => { if (e.target.tagName === 'A') close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+
+  // smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      const t = document.querySelector(id);
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior:'smooth', block:'start' }); }
+    });
+  });
+</script>
+
+</body>
+</html>
