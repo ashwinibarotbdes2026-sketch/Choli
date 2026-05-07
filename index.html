@@ -13,8 +13,8 @@
 <style>
 /* ---------- TOKENS ---------- */
 :root{
-  --paper:#F0E8D9;          /* warm off-white */
-  --paper-2:#E8DFCB;        /* slightly darker paper */
+  --paper:#FFFFFF;          /* pure white */
+  --paper-2:#F4F4F2;        /* near-white accent */
   --ink:#141210;            /* near-black */
   --ink-soft:#1F1B17;
   --pink:#9C1A55;           /* deep saturated bodily pink */
@@ -107,7 +107,7 @@ p + p{margin-top:1em}
   position:fixed; top:0; left:0; right:0; z-index:50;
   display:flex; align-items:center; justify-content:space-between;
   padding:14px var(--gutter);
-  background:linear-gradient(to bottom, rgba(240,232,217,.92), rgba(240,232,217,0));
+  background:linear-gradient(to bottom, rgba(255,255,255,.92), rgba(255,255,255,0));
   backdrop-filter:blur(6px);
   -webkit-backdrop-filter:blur(6px);
   pointer-events:none;
@@ -250,19 +250,22 @@ p + p{margin-top:1em}
 .founder:nth-child(2){margin-top:34px}
 .founder:nth-child(3){margin-top:14px}
 .founder:nth-child(4){margin-top:48px}
-.founder .ill{height:240px; display:flex; align-items:flex-end}
+.founder .ill{height:280px; display:flex; align-items:flex-end}
 .founder .ill.founder-img{
-  background-image:url('assets/founders.png');
-  background-size:400% 100%;
+  background-size:contain;
   background-repeat:no-repeat;
-  background-position:calc(var(--slice, 0) * 33.333%) center;
+  background-position:center bottom;
   background-color:transparent;
   width:100%;
-  /* fallback dotted frame appears if the file is missing */
+  /* fallback dotted frame shows when the file is missing */
   outline:1px dashed var(--rule);
   outline-offset:-4px;
 }
-@media (max-width:600px){ .founder .ill{height:300px} }
+.founder.f-prakrutee .ill.founder-img{ background-image:url('assets/prakrutee.png') }
+.founder.f-asmita    .ill.founder-img{ background-image:url('assets/asmita.png') }
+.founder.f-ashwini   .ill.founder-img{ background-image:url('assets/ashwini.png') }
+.founder.f-daisy     .ill.founder-img{ background-image:url('assets/daisy.png') }
+@media (max-width:600px){ .founder .ill{height:340px} }
 .founder .name{font-family:var(--serif); font-size:32px; font-weight:300; line-height:1; letter-spacing:-.01em}
 .founder .name .deva{color:var(--pink); font-family:var(--deva); margin-right:2px}
 .founder .role{font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; opacity:.6}
@@ -659,22 +662,18 @@ p + p{margin-top:1em}
 <!-- ========== HOME ========== -->
 <section id="home" class="page home">
   <div class="meta">
-    <div><span class="pulse"></span>Currently in study · Spring '26</div>
-    <div style="margin-top:10px">A design research project on visible intimate wear · Chapters ०१–१६ below</div>
+    <div>Fashion · Business Study</div>
+    <div style="margin-top:10px">4th Year Spring '26 (FD B)</div>
   </div>
 
   <div class="mark">
     <div class="word">चोली</div>
-    <div class="latin">Choli<small>(noun, fem.) — the worn thing.</small></div>
+    <div class="latin">Choli</div>
   </div>
-
-  <p class="manifesto">
-    A study in lingerie as a <em>primary garment</em> — not a hidden underlayer. Built around indigenous cotton, repairable architecture, and the <em>visibility of the strap</em> as a styling language.
-  </p>
 
   <div class="footer-row">
     <div class="scroll-cue">Begin reading</div>
-    <div>FD B · 4th Year · Mentor: Gaura Srivastava</div>
+    <div>Mentor: Gaura Srivastava</div>
     <div>Ashwini · Asmita · Daisy · Prakrutee</div>
   </div>
 </section>
@@ -683,46 +682,38 @@ p + p{margin-top:1em}
 <section id="about" class="page chapter" data-num="०२" data-title="Who we are">
   <div class="about-grid">
     <div class="about-intro">
-      <h4 class="kicker">Chapter 02 · Identity</h4>
-      <h2 class="mt-2 italic">Four founders.<br/>Two visual layers.<br/>One narrative system.</h2>
+      <h4 class="kicker">Visual Identity</h4>
+      <h2 class="mt-2 italic">Illustrated Identity as Storytelling</h2>
     </div>
     <div class="about-aside">
-      <p>
-        The brand is built around translating its four founders into fictional illustrated personas. Not mascots — vehicles for a slowly accumulating archive of intimacy, humour, and shared experience.
-      </p>
+      <p>The brand identity is built around the idea of translating the four founders into fictional illustrated personas. Rather than representing ourselves literally, we construct a visual world where our dynamic, humour, and shared experiences can be exaggerated, reinterpreted, and documented over time.</p>
+      <p style="margin-top:14px">This approach allows the brand to function as an evolving narrative system. The characters become vehicles for storytelling, capturing everyday interactions, inside jokes, and group dynamics in a way that is both personal and scalable.</p>
+      <p style="margin-top:14px">The intention is not to create mascots, but to build a living visual language; one that grows with the brand and reflects the relationship between the four founders.</p>
     </div>
 
     <div class="founders">
       <!-- founder 1: Prakrutee -->
-      <div class="founder">
-        <div class="ill founder-img" style="--slice:0" role="img" aria-label="Prakrutee — illustrated portrait"></div>
-        <div class="role">Founder · 01</div>
+      <div class="founder f-prakrutee">
+        <div class="ill founder-img" role="img" aria-label="Prakrutee — illustrated portrait"></div>
         <div class="name"><span class="deva">प्र</span>krutee</div>
-        <div class="desc">Holds the system. Diagrams that breathe.</div>
       </div>
 
       <!-- founder 2: Asmita -->
-      <div class="founder">
-        <div class="ill founder-img" style="--slice:1" role="img" aria-label="Asmita — illustrated portrait"></div>
-        <div class="role">Founder · 02</div>
+      <div class="founder f-asmita">
+        <div class="ill founder-img" role="img" aria-label="Asmita — illustrated portrait"></div>
         <div class="name"><span class="deva">अ</span>smita</div>
-        <div class="desc">Material custodian. Reads tags, asks twice.</div>
       </div>
 
       <!-- founder 3: Ashwini -->
-      <div class="founder">
-        <div class="ill founder-img" style="--slice:2" role="img" aria-label="Ashwini — illustrated portrait"></div>
-        <div class="role">Founder · 03</div>
+      <div class="founder f-ashwini">
+        <div class="ill founder-img" role="img" aria-label="Ashwini — illustrated portrait"></div>
         <div class="name"><span class="deva">अ</span>shwini</div>
-        <div class="desc">Layout instigator. Negative space evangelist.</div>
       </div>
 
       <!-- founder 4: Daisy -->
-      <div class="founder">
-        <div class="ill founder-img" style="--slice:3" role="img" aria-label="Daisy — illustrated portrait"></div>
-        <div class="role">Founder · 04</div>
+      <div class="founder f-daisy">
+        <div class="ill founder-img" role="img" aria-label="Daisy — illustrated portrait"></div>
         <div class="name"><span class="deva">डे</span>aisy</div>
-        <div class="desc">Doodle archivist. The chaos under the calm.</div>
       </div>
     </div>
 
@@ -730,7 +721,7 @@ p + p{margin-top:1em}
     <div class="doodle-row">
       <div>
         <div class="kicker label">The Intimate Layer</div>
-        <h3 class="mt-2">A doodle drawn during a shared outing — kept exactly as it was.</h3>
+        <h3 class="mt-2">A spontaneous doodle created during a shared outing.</h3>
       </div>
       <div class="strip">
         <!-- four doodled bras in different colors on dark bg -->
@@ -779,19 +770,18 @@ p + p{margin-top:1em}
 <section id="vision" class="page chapter" data-num="०३" data-title="Vision & Mission">
   <div class="vm-grid">
     <div class="vm-vision">
-      <h4 class="kicker">Chapter 03 · Vision</h4>
-      <h2 class="mt-2">A line of thought.</h2>
+      <h4 class="kicker">Vision</h4>
       <p class="big mt-3">
-        To reposition lingerie from a concealed, disposable underlayer to a <em>visible</em>, <em>durable</em>, and <em>materially conscious</em> garment — rooted in indigenous cotton systems such as organic cotton and kala cotton.
+        To reposition lingerie from a concealed, disposable underlayer to a <em>visible</em>, <em>durable</em>, and <em>materially conscious</em> garment, rooted in indigenous cotton systems such as organic cotton and kala cotton.
       </p>
     </div>
     <div class="vm-mission">
       <h4 class="kicker">Mission</h4>
       <ol>
-        <li><p>Develop a category of non-synthetic, repairable intimate wear using rain-fed, low-input fibres (kala cotton) and certified organic cotton.</p></li>
-        <li><p>Challenge the dominant aesthetic of invisibility in lingerie by legitimising the visibility of bra straps as a styling language.</p></li>
-        <li><p>Extend garment life cycles through design-for-repair frameworks: user manuals and brand-supported mending.</p></li>
-        <li><p>Embed craft practices (block printing) within contemporary intimate wear without reducing them to surface ornament.</p></li>
+        <li><p>To develop a category of non-synthetic, repairable intimate wear using rain-fed, low-input fibres (kala cotton) and certified organic cotton.</p></li>
+        <li><p>To challenge the dominant aesthetic of invisibility in lingerie by legitimising the visibility of bra straps as a styling language.</p></li>
+        <li><p>To extend garment life cycles through design-for-repair frameworks, including user manuals and brand-supported mending systems.</p></li>
+        <li><p>To embed craft practices (block printing) within contemporary intimate wear without reducing them to surface-level ornamentation.</p></li>
       </ol>
     </div>
   </div>
@@ -800,44 +790,40 @@ p + p{margin-top:1em}
 <!-- ========== PROBLEM ========== -->
 <section id="problem" class="page chapter" data-num="०४" data-title="The Problem">
   <div class="problem-grid">
-    <h4 class="kicker">Chapter 04</h4>
-    <h2>The waste arithmetic of intimate wear.</h2>
-    <div class="intro">
-      <p>Intimate wear is, by category, a disproportionately high-waste object. The reasons are not incidental. They are designed in.</p>
-    </div>
+    <h4 class="kicker">Problem</h4>
+    <h2>Intimate wear constitutes a disproportionately high-waste category due to:</h2>
 
     <div class="problem-list">
       <div class="row">
         <div class="n">०१</div>
         <div class="term">Material complexity</div>
-        <div class="body">Polyester, nylon, and elastane blends — bonded, fused, layered. Once mixed, they cannot be unmixed for recycling.</div>
+        <div class="body">Polyester, nylon, elastane blends.</div>
       </div>
       <div class="row">
         <div class="n">०२</div>
         <div class="term">Component hybridity</div>
-        <div class="body">Wires, hooks, elastics, sliders, foams. Six material families inside a single garment. None of them separate at end-of-life.</div>
+        <div class="body">Wires, elastics, hooks.</div>
       </div>
       <div class="row">
         <div class="n">०३</div>
         <div class="term">Low repairability</div>
-        <div class="body">Elastic fatigues; stitching is fine and concealed. The garment fails as a whole even when 80% of it is intact.</div>
+        <div class="body">Elastic fatigue + fine construction.</div>
       </div>
       <div class="row">
         <div class="n">०४</div>
         <div class="term">End-of-life barriers</div>
-        <div class="body">Hygiene constraints on resale. Mixed fibres reject recycling streams. Every used bra is a one-way object.</div>
+        <div class="body">Non-recyclable, hygiene constraints.</div>
       </div>
       <div class="row">
         <div class="n">०५</div>
-        <div class="term">Landfill dependency</div>
-        <div class="body">The result: near-total dependency on landfill — with decomposition timelines measured in decades to centuries.</div>
+        <div class="term">Result</div>
+        <div class="body">Near-total landfill dependency.</div>
       </div>
-    </div>
-
-    <div class="decompose-bar">
-      <span>Cotton ~ 1 yr</span>
-      <span class="bar"><span class="marker" style="left:0"></span><span class="marker" style="left:8%; background:var(--ink)"></span><span class="marker" style="left:78%; background:var(--ink); opacity:.5"></span></span>
-      <span>Polyester ~ 200 yrs</span>
+      <div class="row">
+        <div class="n">०६</div>
+        <div class="term">Decomposition timelines</div>
+        <div class="body">Decades to centuries.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -845,31 +831,23 @@ p + p{margin-top:1em}
 <!-- ========== INTERVENTION ========== -->
 <section id="intervention" class="page chapter" data-num="०५" data-title="Our Intervention">
   <div class="inter">
-    <h4 class="kicker">Chapter 05</h4>
-    <h2>What we propose, instead.</h2>
-    <p class="lead">
-      Four moves, made together. Each one is small. Together, they re-organise the object.
-    </p>
+    <h4 class="kicker">Intervention</h4>
     <div class="moves">
       <div class="move">
         <div class="num">०१</div>
         <h3>Mono / low-blend natural materials</h3>
-        <p>Kala cotton and certified organic cotton. Single-fibre constructions wherever possible — recyclable in principle, biodegradable in fact.</p>
       </div>
       <div class="move">
         <div class="num">०२</div>
         <h3>Simplified construction logic</h3>
-        <p>Fewer components. Soft structuring through cut, ties, and layering — not wires, not foams, not engineered compression.</p>
       </div>
       <div class="move">
         <div class="num">०३</div>
         <h3>Repairable architecture</h3>
-        <p>Modular components — straps, bands, cups separable where possible. Reinforced stress points. A construction that anticipates wear.</p>
       </div>
       <div class="move">
         <div class="num">०४</div>
         <h3>Extended use cycles</h3>
-        <p>A warranty-backed brand repair service. A printed care &amp; mend manual. Garments designed to age, not to expire.</p>
       </div>
     </div>
   </div>
@@ -878,28 +856,26 @@ p + p{margin-top:1em}
 <!-- ========== DESIGN PHILOSOPHY ========== -->
 <section id="philosophy" class="page chapter" data-num="०६" data-title="Design Philosophy">
   <div class="philo">
-    <h4 class="kicker">Chapter 06</h4>
-    <h2 class="italic">Three positions.</h2>
+    <h4 class="kicker">Our Design Philosophy</h4>
 
     <div class="pillar">
-      <span class="pn">Pillar 01</span>
-      <h3>Visibility as intent</h3>
-      <p>Straps are designed to be seen, not hidden. Lingerie operates as a layered garment, not a base layer. Visibility is not exhibitionism — it is a refusal of the inherited shame around intimate construction.</p>
-      <div class="quote">"Show them straps."<em>Garment autonomy through visibility.</em></div>
+      <span class="pn">01</span>
+      <h3>Visibility as Intent</h3>
+      <p>Straps are designed to be seen, not hidden. Lingerie operates as a layered garment, not a base layer.</p>
+      <div class="quote">Cultural reference point:<em>The "free the tits" movement — body autonomy through exposure.</em><em style="margin-top:6px">"Show them straps" — garment autonomy through visibility.</em></div>
     </div>
 
     <div class="pillar">
-      <span class="pn">Pillar 02</span>
-      <h3>Anti-synthetic construction</h3>
-      <p>No elastane-heavy dependency. Fabric-led support rather than engineered compression. Soft structuring through cut, ties, and layering — not wires.</p>
-      <p class="muted">A bra that holds because it is well cut, not because it is well engineered.</p>
+      <span class="pn">02</span>
+      <h3>Anti-Synthetic Construction</h3>
+      <p>No elastane-heavy dependency (or minimised strategically). Fabric-led support rather than engineered compression. Soft structuring through cut, ties, and layering — not wires.</p>
     </div>
 
     <div class="pillar">
-      <span class="pn">Pillar 03</span>
-      <h3>Repairability as ethic</h3>
-      <p>Modular components. Reinforced stress points. A printed manual. A repair service backed by warranty.</p>
-      <p>Repair becomes both functional and emotional — an extension of attachment, a practice of care.</p>
+      <span class="pn">03</span>
+      <h3>Repairability</h3>
+      <p>Modular components (straps, bands, cups separable where possible). Reinforced stress points.</p>
+      <p style="margin-top:10px"><b style="font-weight:500;color:var(--pink)">Repair Ecosystem:</b> Brand repair service (warranty based).</p>
     </div>
   </div>
 </section>
@@ -907,54 +883,52 @@ p + p{margin-top:1em}
 <!-- ========== AUDIENCE ========== -->
 <section id="audience" class="page chapter" data-num="०७" data-title="Who it's for">
   <div class="aud">
-    <h4 class="kicker">Chapter 07</h4>
-    <h2>The reader of labels.</h2>
-    <p class="lead">Choli is built for the woman who treats clothing as both a personal language and a political position. She is not seeking lingerie. She is seeking a garment.</p>
+    <h4 class="kicker">Target Audience</h4>
 
     <div class="persona">
       <div class="head">
-        <div class="kicker" style="margin-bottom:14px">Primary persona</div>
         <div class="pname">Aarya <em>Mehta</em></div>
         <div class="pmeta">
           <div><b>Age</b>25</div>
+          <div><b>Gender</b>Woman</div>
           <div><b>Income</b>₹22 LPA</div>
-          <div><b>City</b>Bombay · Bangalore · Delhi</div>
-          <div><b>Role</b>UX Designer, tech startup</div>
-          <div><b>Edu.</b>Bachelor's in Design</div>
+          <div><b>Location</b>Mumbai · Bangalore · Delhi</div>
+          <div><b>Occupation</b>UX Designer at a tech startup</div>
+          <div><b>Education</b>Bachelor's in Design</div>
         </div>
       </div>
       <div class="body">
         <div class="group">
-          <h4>Emotional needs</h4>
+          <h4>Emotional Needs</h4>
           <ul>
             <li>To feel comfortable but still styled.</li>
             <li>To feel aligned with her values without compromising aesthetics.</li>
             <li>To own pieces that feel personal, not mass-produced.</li>
-            <li>To engage in care rituals — repair, preservation.</li>
-            <li>To avoid the waste-guilt of disposability.</li>
+            <li>To engage in care rituals (repair, preserving).</li>
+            <li>Avoid waste guilt associated with disposability.</li>
           </ul>
         </div>
         <div class="group">
-          <h4>Functional needs</h4>
+          <h4>Functional Needs</h4>
           <ul>
             <li>Breathable fabrics suited for hot, humid climates.</li>
             <li>Non-synthetic or low-synthetic material composition.</li>
             <li>Wire-free support with structured design.</li>
-            <li>Garments that work in dual contexts — under and as.</li>
-            <li>Durability, repairability, clear care manuals.</li>
+            <li>Garments that work in dual contexts: as underclothing &amp; as visible styling elements.</li>
+            <li>Durability + repairability.</li>
+            <li>Clear care instructions / manuals.</li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="psycho">
-      <h4 class="kicker">Texture of the audience</h4>
       <div class="psycho-cols">
         <div class="col">
           <h5>Psychographics</h5>
           <ul>
             <li>Values material honesty over branding.</li>
-            <li>Actively questions fast-fashion systems.</li>
+            <li>Actively questions fast fashion systems.</li>
             <li>Seeks function + ideology alignment.</li>
             <li>Engages with design as discourse, not just consumption.</li>
             <li>Comfortable with non-sexualised body expression.</li>
@@ -962,32 +936,32 @@ p + p{margin-top:1em}
           </ul>
         </div>
         <div class="col">
-          <h5>Lifestyle</h5>
+          <h5>Lifestyle Indicators</h5>
           <ul>
             <li>Shops from independent / niche labels.</li>
             <li>Mixes contemporary + craft-based clothing.</li>
-            <li>Engages in slow rituals — repair, care, reuse.</li>
-            <li>Consumes design / media critically.</li>
-            <li>Attends exhibitions, pop-ups, concept stores.</li>
+            <li>Engages in slow rituals (repair, care, reuse).</li>
+            <li>Consumes design / media critically (not trend-driven).</li>
+            <li>Likely to attend exhibitions, pop-ups, concept stores.</li>
           </ul>
         </div>
         <div class="col">
-          <h5>Behavioural traits</h5>
+          <h5>Behavioural Traits</h5>
           <ul>
-            <li>Will pay a premium for material + philosophy.</li>
-            <li>Reads labels; asks questions about fabric &amp; sourcing.</li>
+            <li>Will pay premium for material + philosophy.</li>
+            <li>Reads labels, asks questions about fabric + sourcing.</li>
             <li>Keeps garments longer if repair is possible.</li>
             <li>Avoids mass brands unless necessary.</li>
-            <li>Adopts products that offer systems, not just objects.</li>
+            <li>Adopts products that offer systems (not just objects).</li>
           </ul>
         </div>
         <div class="col">
-          <h5>Pain points</h5>
+          <h5>Pain Points</h5>
           <ul>
             <li>Synthetic lingerie causing sweating, irritation.</li>
-            <li>Lack of repair options; elastic fatigue.</li>
-            <li>Poor lifespan → frequent replacement cycles.</li>
-            <li>Cultural conditioning to hide lingerie elements.</li>
+            <li>Lack of repair options (elastic fatigue, wear).</li>
+            <li>Poor lifespan leads to frequent replacement cycles.</li>
+            <li>Cultural conditioning to hide lingerie elements (straps).</li>
           </ul>
         </div>
       </div>
@@ -998,114 +972,52 @@ p + p{margin-top:1em}
 <!-- ========== VPC ========== -->
 <section id="vpc" class="page chapter" data-num="०८" data-title="Value Proposition">
   <div class="vpc">
-    <h4 class="kicker">Chapter 08</h4>
-    <h2>Value Proposition Canvas.</h2>
-
-    <div class="vp-card">
-      <div class="shape">अ</div>
-      <h3>Customer Profile — Aarya</h3>
-
-      <div class="block">
-        <h4>Jobs to be done</h4>
-        <ul>
-          <li>Dress comfortably for humid climates without compromising values.</li>
-          <li>Express identity through everyday objects.</li>
-          <li>Buy fewer, better, longer-lived intimate wear.</li>
-        </ul>
-      </div>
-      <div class="block">
-        <h4>Pains</h4>
-        <ul>
-          <li>Synthetic discomfort, irritation.</li>
-          <li>Disposability, repair anxiety.</li>
-          <li>Cultural pressure to hide intimate construction.</li>
-        </ul>
-      </div>
-      <div class="block">
-        <h4>Gains</h4>
-        <ul>
-          <li>Garments that age into character.</li>
-          <li>Membership in a slow, considered material world.</li>
-          <li>Permission to make the strap visible.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="vp-card right">
-      <div class="shape">च</div>
-      <h3>Value Map — Choli</h3>
-
-      <div class="block">
-        <h4>Products &amp; services</h4>
-        <ul>
-          <li>Wire-free knitted-cotton bras.</li>
-          <li>Modular fabric packaging that becomes a tote.</li>
-          <li>Warranty-backed repair service.</li>
-          <li>Printed care + mend manuals.</li>
-        </ul>
-      </div>
-      <div class="block">
-        <h4>Pain relievers</h4>
-        <ul>
-          <li>Mono-fibre, breathable construction.</li>
-          <li>Reinforced stress points; replaceable straps.</li>
-          <li>Visibility framed as styling, not exposure.</li>
-        </ul>
-      </div>
-      <div class="block">
-        <h4>Gain creators</h4>
-        <ul>
-          <li>Indigenous cotton story — kala cotton.</li>
-          <li>Block-printed patterning rooted in craft.</li>
-          <li>An evolving illustrated archive to belong to.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="vpc-fit">
-      <h4>Product–Audience Fit</h4>
-      <p>Choli answers Aarya's question — "<em>how do I dress my body in a way that matches the rest of my world?</em>" — with a garment, a system, and a story.</p>
-    </div>
+    <h4 class="kicker">Value Proposition Canvas (VPC)</h4>
+    <p style="grid-column:1 / span 12; font-family:var(--mono); font-size:12px; letter-spacing:.06em; opacity:.55; margin-top:20px">[ Section to be populated from PDF — not yet drafted in source. ]</p>
   </div>
 </section>
 
 <!-- ========== COMPETITORS ========== -->
 <section id="competitors" class="page chapter" data-num="०९" data-title="The Field">
   <div class="comp">
-    <h4 class="kicker">Chapter 09</h4>
-    <h2>Where we stand.</h2>
-    <p class="lead">India's organic intimate-wear category is small but instructive. Two reference points clarify the gap Choli enters into.</p>
+    <h4 class="kicker">Competitor Analysis</h4>
 
-    <div class="comp-table">
+    <div class="comp-table" style="grid-template-columns:160px 1fr 1fr;margin-top:30px">
       <div class="row-h"></div>
       <div class="col-h">Inner Sense<sub>Bengaluru · 2016</sub></div>
       <div class="col-h">Maayu<sub>India · 2020s</sub></div>
-      <div class="col-h us">Choli<sub>Est. 2026</sub></div>
+
+      <div class="row-h">About</div>
+      <div>An Indian brand specialising in organic, sustainable lingerie and intimate apparel for women. Founded with a focus on comfort and ecological responsibility, recognised for introducing organic cotton lingerie to the Indian market.</div>
+      <div>An Indian brand specialising in organic cotton underwear and loungewear. Focuses on creating eco-friendly, ethically made essentials. Emphasises natural materials, transparent sourcing, and environmentally conscious production.</div>
+
+      <div class="row-h">Founders</div>
+      <div>Akshay Naheta and Kanika Naheta</div>
+      <div>—</div>
+
+      <div class="row-h">Founded</div>
+      <div>2016</div>
+      <div>2020s, India</div>
+
+      <div class="row-h">Core products</div>
+      <div>Lingerie, sleepwear, maternity bras, activewear.</div>
+      <div>Organic cotton underwear, loungewear.</div>
+
+      <div class="row-h">Materials</div>
+      <div>Certified organic cotton and bamboo fabric blends.</div>
+      <div>GOTS-certified organic cotton.</div>
 
       <div class="row-h">Positioning</div>
-      <div>India's early organic-lingerie pioneer.</div>
-      <div>100% organic-cotton underwear; no spandex, no dyes.</div>
-      <div class="strength">Visible lingerie as primary garment.</div>
+      <div>India's early organic lingerie pioneer. Uses organic cotton + bamboo blends.</div>
+      <div>100% organic cotton underwear. No synthetics, no spandex, no dyes.</div>
 
-      <div class="row-h">Material</div>
-      <div>Organic cotton + bamboo viscose blends.</div>
-      <div>GOTS-certified organic cotton.</div>
-      <div class="strength">Kala cotton + organic cotton, mono-blend logic.</div>
-
-      <div class="row-h">Design proposition</div>
-      <div>Comfort and skin-health.</div>
-      <div>Function-only; basics.</div>
-      <div class="strength">Strap visibility · craft · system design.</div>
-
-      <div class="row-h">System</div>
-      <div>Conventional retail.</div>
-      <div>Plastic-free packaging.</div>
-      <div class="strength">Repair service · modular packaging · manuals.</div>
+      <div class="row-h">Strength</div>
+      <div class="strength">Strong product range (wired, non-wired, padded, etc.). Focus on skin health + comfort.</div>
+      <div class="strength">Closest to your material ideology. Fully skin-safe + breathable.</div>
 
       <div class="row-h">Limitation</div>
-      <div class="limit">Still relies on performance blends; doesn't challenge visibility norms.</div>
-      <div class="limit">No design language; no styling proposition.</div>
-      <div class="limit" style="color:var(--pink);font-style:normal">Requires behavioural shift — and that is the project.</div>
+      <div class="limit">Still relies on performance blends (elastane, bamboo viscose). Not anti-synthetic. Does not challenge visibility norms (lingerie still "underwear").</div>
+      <div class="limit">Product is function-only (panties, basics). No design language, no styling proposition. No engagement with lingerie as visible garment.</div>
     </div>
   </div>
 </section>
@@ -1113,8 +1025,7 @@ p + p{margin-top:1em}
 <!-- ========== SWOT ========== -->
 <section id="swot" class="page chapter" data-num="१०" data-title="SWOT">
   <div class="swot">
-    <h4 class="kicker">Chapter 10</h4>
-    <h2>SWOT — internal &amp; external.</h2>
+    <h4 class="kicker">SWOT</h4>
 
     <div class="swot-grid mt-3">
       <div class="h"></div>
@@ -1249,9 +1160,7 @@ p + p{margin-top:1em}
 <!-- ========== TOWS ========== -->
 <section id="tows" class="page chapter" data-num="११" data-title="TOWS Matrix">
   <div class="tows">
-    <h4 class="kicker">Chapter 11</h4>
-    <h2>TOWS — turning analysis into action.</h2>
-    <p class="lead">SWOT identifies. TOWS prescribes. Each quadrant is a rule we are building the company against.</p>
+    <h4 class="kicker">TOWS Matrix</h4>
 
     <div class="tows-grid">
       <div class="h"></div>
@@ -1260,15 +1169,15 @@ p + p{margin-top:1em}
 
       <div class="h">Strengths (S)</div>
       <div class="cell">
-        <div class="label">SO · use strengths to maximise opportunities</div>
+        <div class="label">SO Strategies (use strengths to maximise opportunities)</div>
         <ul>
-          <li>Position as the category-defining brand for visible lingerie before competitors enter.</li>
+          <li>Position as category-defining brand for visible lingerie before competitors enter.</li>
           <li>Use kala cotton + organic sourcing to build material literacy and trust.</li>
-          <li>Expand repair into community-led engagement — workshops, content, exhibitions.</li>
+          <li>Expand repair into community-led engagement (workshops, content).</li>
         </ul>
       </div>
       <div class="cell">
-        <div class="label">ST · use strengths to counter threats</div>
+        <div class="label">ST Strategies (use strengths to counter threats)</div>
         <ul>
           <li>Differentiate through system (repair + material), not just aesthetic.</li>
           <li>Use radical transparency to counter greenwashing.</li>
@@ -1278,15 +1187,15 @@ p + p{margin-top:1em}
 
       <div class="h">Weaknesses (W)</div>
       <div class="cell">
-        <div class="label">WO · use opportunities to overcome weaknesses</div>
+        <div class="label">WO Strategies (use opportunities to overcome weaknesses)</div>
         <ul>
           <li>Reframe lack of stretch as adjustable / tie-based design innovation.</li>
           <li>Educate users to normalise repair behaviour.</li>
-          <li>Target early adopters (urban, design-aware) instead of mass market.</li>
+          <li>Target early adopters (urban, design-aware) instead of mass.</li>
         </ul>
       </div>
       <div class="cell">
-        <div class="label">WT · minimise weaknesses, avoid threats</div>
+        <div class="label">WT Strategies (minimise weaknesses + avoid threats)</div>
         <ul>
           <li>Maintain controlled scale to ensure quality and fit.</li>
           <li>Introduce minimal hybrid material (if needed) without diluting core claim.</li>
@@ -1300,9 +1209,7 @@ p + p{margin-top:1em}
 <!-- ========== PRODUCT / PROTOTYPE ========== -->
 <section id="product" class="page chapter" data-num="१२" data-title="Prototype">
   <div class="product">
-    <h4 class="kicker">Chapter 12</h4>
-    <h2 class="italic">The first object.</h2>
-    <p class="lead">A wire-free, knitted-cotton bra. Hook-and-eye closure, soft padding, visible straps. Three views, three logics.</p>
+    <h4 class="kicker">Prototype</h4>
 
     <div class="proto-grid">
       <div class="proto-card">
@@ -1335,7 +1242,6 @@ p + p{margin-top:1em}
           </svg>
         </div>
         <h3>Front</h3>
-        <p>Visible straps, soft cup line, no underwire. Knitted-cotton structure provides natural stretch + recovery without elastane dependency.</p>
       </div>
 
       <div class="proto-card">
@@ -1367,11 +1273,10 @@ p + p{margin-top:1em}
           </svg>
         </div>
         <h3>Back</h3>
-        <p>Hook-and-eye closure, multiple settings. Adjustable strap sliders. Stress points reinforced for repair-readiness.</p>
       </div>
 
       <div class="proto-card">
-        <div class="lbl">View · 03 / Hook detail</div>
+        <div class="lbl">View · 03 / Hook</div>
         <div class="ill">
           <svg viewBox="0 0 220 280" width="220" height="280" aria-hidden="true">
             <g fill="none" stroke="#9C1A55" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1401,26 +1306,25 @@ p + p{margin-top:1em}
             </g>
           </svg>
         </div>
-        <h3>Hook detail</h3>
-        <p>Standard 3-row hook closure, sourced for replaceability. The closure can be removed and re-stitched without compromising the cup or band.</p>
+        <h3>Hook</h3>
       </div>
 
       <div class="specs">
         <div class="item">
-          <h4 class="kicker">Material</h4>
-          <p>Kala cotton outer · organic cotton lining · cotton thread.</p>
+          <h4 class="kicker">Functionality</h4>
+          <p>Wire-free support using knitted cotton structures, allowing natural stretch and recovery without elastane dependency.</p>
+        </div>
+        <div class="item">
+          <h4 class="kicker">Padding</h4>
+          <p>Incorporates padding for support.</p>
         </div>
         <div class="item">
           <h4 class="kicker">Closure</h4>
-          <p>Hook-and-eye, three-row standard. Adjuster sliders.</p>
+          <p>Hook and eye closures similar to traditional bras.</p>
         </div>
         <div class="item">
-          <h4 class="kicker">Support</h4>
-          <p>Soft padding · knitted structure · no underwire.</p>
-        </div>
-        <div class="item">
-          <h4 class="kicker">Repair points</h4>
-          <p>Strap join · band seam · cup edge · closure.</p>
+          <h4 class="kicker">Material</h4>
+          <p>Kala cotton + organic cotton — breathable, skin-safe, durable.</p>
         </div>
       </div>
     </div>
@@ -1430,9 +1334,10 @@ p + p{margin-top:1em}
 <!-- ========== PACKAGING ========== -->
 <section id="packaging" class="page chapter" data-num="१३" data-title="Packaging">
   <div class="pack">
-    <h4 class="kicker">Chapter 13</h4>
-    <h2 class="italic">Packaging that refuses to be packaging.</h2>
-    <p class="lead">A modular fabric system — made from upcycled textile waste — that converts, through folds and buttons, into four utility forms. Single-use becomes long-use.</p>
+    <h4 class="kicker">Packaging</h4>
+    <p class="lead">The packaging is designed as a modular, reusable fabric system made from upcycled textile waste. Instead of functioning as single-use packaging, it transforms into multiple utility formats such as a tote, mini organiser, or tiffin bag through a system of folds, loops, and buttons.</p>
+    <p class="lead" style="margin-top:14px">A QR code-based illustrated manual guides the user through these transformations, making the interaction intuitive and engaging. This approach extends the lifecycle of packaging, reduces waste, and shifts it from a disposable element to a functional, long-term object.</p>
+    <p class="lead" style="margin-top:14px">The design aligns with the brand's larger philosophy of product circularity and material consciousness, positioning packaging as an active part of the product experience.</p>
 
     <div class="pack-grid">
       <div class="pack-card">
@@ -1448,8 +1353,8 @@ p + p{margin-top:1em}
             </g>
           </svg>
         </div>
-        <h3>Shopping bag</h3>
-        <p>Loops + buttons along the edges secure all corners.</p>
+        <h3>Shopping Bag</h3>
+        <p>Use the loops and buttons along the edges to secure all corners.</p>
       </div>
       <div class="pack-card">
         <div class="num">०२</div>
@@ -1466,8 +1371,8 @@ p + p{margin-top:1em}
             </g>
           </svg>
         </div>
-        <h3>Mini organiser</h3>
-        <p>Tuck the handle inside; secure the corners.</p>
+        <h3>Mini Organiser</h3>
+        <p>Use the loops and buttons along the edges to secure all corners. Tuck the handle inside.</p>
       </div>
       <div class="pack-card">
         <div class="num">०३</div>
@@ -1484,8 +1389,8 @@ p + p{margin-top:1em}
             </g>
           </svg>
         </div>
-        <h3>Tiffin bag</h3>
-        <p>Place tiffin; button up the edges.</p>
+        <h3>Tiffin Bag</h3>
+        <p>Place your tiffin and button up the edges.</p>
       </div>
       <div class="pack-card">
         <div class="num">०४</div>
@@ -1500,19 +1405,15 @@ p + p{margin-top:1em}
             </g>
           </svg>
         </div>
-        <h3>Mini bag</h3>
-        <p>Fold to a rectangle, align the edges.</p>
+        <h3>Mini Bag</h3>
+        <p>Fold the bag into a rectangle, aligning the edges.</p>
       </div>
     </div>
 
     <div class="pack-note">
       <div>
-        <h4 class="kicker">QR · scan to transform</h4>
-        <p>An illustrated manual guides the user through every fold. The packaging stops being packaging within minutes of arrival.</p>
-      </div>
-      <div>
-        <h4 class="kicker">Why it matters</h4>
-        <p>Packaging is the part of fashion that has the shortest life and the highest waste. Re-engineering it changes the whole arrival ritual — and removes a category of disposable from the customer's home.</p>
+        <h4 class="kicker">Scan to transform your modular shopping bag</h4>
+        <p>A QR code-based illustrated manual guides the user through these transformations.</p>
       </div>
     </div>
   </div>
@@ -1521,16 +1422,15 @@ p + p{margin-top:1em}
 <!-- ========== ILLUSTRATION SYSTEM ========== -->
 <section id="illustration" class="page chapter" data-num="१४" data-title="Illustration System">
   <div class="ills">
-    <h4 class="kicker">Chapter 14</h4>
-    <h2 class="italic">A visual world in two registers.</h2>
-    <p class="lead">The brand sits between two illustration languages, used together by intention. They contradict each other — and that is precisely the work.</p>
+    <h4 class="kicker">Illustration System</h4>
 
     <div class="ills-pair">
       <div class="layer left">
-        <div class="lbl">Layer A · Composed</div>
-        <h3>Refined cultural illustration</h3>
-        <p>Drawn from traditional Indian feminine illustration: poised figures, controlled linework, stylised features, a sense of stillness. The composed self.</p>
-        <p class="muted">Used for: brand mark, hero imagery, founder personas, product editorial.</p>
+        <div class="lbl">Route One</div>
+        <h3>Refined Cultural Illustration</h3>
+        <p>This direction draws from traditional Indian feminine illustration styles, where figures are typically depicted as poised, self-contained, and visually balanced. The aesthetic is deliberate — controlled linework, stylised features, and a sense of stillness.</p>
+        <p style="margin-top:10px">Within this framework, the characters are positioned as composed and nonchalant. However, this sense of control is intentionally disrupted through their interactions. Their poses, proximity, and gestures introduce moments of unexpected intimacy, absurdity, or subtle chaos.</p>
+        <p style="margin-top:10px">This contrast creates a layered reading: while the figures appear calm and refined individually, their collective behaviour reveals a more unfiltered, unrestrained dynamic.</p>
         <div class="show">
           <svg viewBox="0 0 240 200" width="220" aria-hidden="true">
             <g fill="none" stroke="#9C1A55" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
@@ -1556,10 +1456,11 @@ p + p{margin-top:1em}
       </div>
 
       <div class="layer right">
-        <div class="lbl">Layer B · Chaotic</div>
-        <h3>Doodle-archive style</h3>
-        <p>An archive of instinctive marks — the kind made on a napkin, with friends. Uneven lines, exaggerated proportions, unselfconscious. The private self.</p>
-        <p class="muted">Used for: packaging interiors, repair-manual illustrations, social, the founder doodle archive.</p>
+        <div class="lbl">Route Two</div>
+        <h3>Doodle Archive</h3>
+        <p>This direction originates from a real, documented moment — a spontaneous doodle created during a shared outing. The drawing captures the four founders through simplified, exaggerated forms, translating personality into instinctive marks and gestures.</p>
+        <p style="margin-top:10px">Unlike the constructed nature of the refined illustrations, this style is direct and unmediated. The lines are uneven, the proportions are inconsistent, and the expressions are exaggerated — reflecting a sense of ease, familiarity, and informality within the group.</p>
+        <p style="margin-top:10px">This visual language operates as a personal archive. It represents how the founders perceive each other in private — playful, chaotic, and unselfconscious.</p>
         <div class="show">
           <svg viewBox="0 0 240 200" width="220" aria-hidden="true">
             <g fill="none" stroke="#C7849A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
@@ -1580,7 +1481,7 @@ p + p{margin-top:1em}
     </div>
 
     <div class="intersect">
-      The composed and the chaotic are not in conflict. They are both true — and the tension between them is where Choli actually lives.
+      Within the brand system, Route Two functions as an intimate layer. It complements the more composed illustration style by grounding the brand in lived experience.
     </div>
   </div>
 </section>
@@ -1588,72 +1489,61 @@ p + p{margin-top:1em}
 <!-- ========== MARKETING ========== -->
 <section id="marketing" class="page chapter" data-num="१५" data-title="Marketing">
   <div class="mark5">
-    <h4 class="kicker">Chapter 15</h4>
-    <h2 class="italic">Marketing as discourse, not performance.</h2>
-    <p class="lead">No paid funnel optimisation. The work is to build a community around a question, not push product through pipes.</p>
+    <h4 class="kicker">Marketing and Communication Strategy · 5 P's of Marketing</h4>
 
-    <div class="fivep">
+    <div class="fivep" style="grid-template-columns:repeat(4,1fr)">
       <div class="p">
         <div class="letter">प्र</div>
         <h4 class="kicker">Product</h4>
         <ul>
-          <li>Wire-free, knitted-cotton support.</li>
-          <li>Strap as a styling element.</li>
-          <li>Kala + organic cotton — breathable, durable.</li>
-          <li>Repair-based warranty.</li>
-          <li>Modular fabric packaging.</li>
+          <li><b>Functionality:</b> wire-free support using knitted cotton structures, allowing natural stretch and recovery without elastane dependency.</li>
+          <li>Incorporates padding for support.</li>
+          <li>Hook and eye closures similar to traditional bras.</li>
+          <li><b>Appearance:</b> visible lingerie (straps as styling element), minimal, culturally rooted.</li>
+          <li><b>Quality:</b> kala cotton + organic cotton — breathable, skin-safe, durable.</li>
+          <li><b>Warranty:</b> repair-based system (brand-supported mending).</li>
+          <li><b>Packaging:</b> modular, reusable fabric packaging aligned with anti-waste principles.</li>
         </ul>
       </div>
       <div class="p">
         <div class="letter">मू</div>
         <h4 class="kicker">Price</h4>
         <ul>
-          <li>Premium, value-based pricing.</li>
-          <li>Higher than mass lingerie (₹800–₹2,000).</li>
-          <li>On par with premium sustainable peers.</li>
-          <li>Justified via material + repair ecosystem.</li>
-          <li>Range: <b style="color:var(--pink)">₹3,100–₹3,300</b>.</li>
-        </ul>
-      </div>
-      <div class="p">
-        <div class="letter">स्थ</div>
-        <h4 class="kicker">Place</h4>
-        <ul>
-          <li>D2C website for full storytelling.</li>
-          <li>Curated stockists (e.g. Good Earth).</li>
-          <li>Made-to-order / small-batch production.</li>
-          <li>Repair as after-sales engagement.</li>
-          <li>Urban design-conscious markets.</li>
+          <li>Premium, value-based strategy, justified through material integrity, longevity, and system design.</li>
+          <li>Higher than mass lingerie brands (₹800–₹2,000).</li>
+          <li>Comparable to or slightly above premium sustainable brands.</li>
+          <li>Justified through: non-synthetic material system, knitted construction innovation, built-in repair ecosystem, extended lifecycle.</li>
+          <li>Price range: <b style="color:var(--pink)">₹3,100–₹3,300</b>.</li>
         </ul>
       </div>
       <div class="p">
         <div class="letter">प्र</div>
         <h4 class="kicker">Promotion</h4>
         <ul>
-          <li>Concept-led visuals · illustrated identity.</li>
-          <li>PR around repair + anti-synthetic.</li>
-          <li>Instagram + website primary.</li>
-          <li>Pop-ups: Lil Flea, Raw Collaborative.</li>
-          <li>Design-led retail environments.</li>
+          <li><b>Advertising:</b> concept-led visuals using illustrated identity and character-based storytelling.</li>
+          <li><b>Public relations:</b> engagement with themes of sustainability, repair culture, anti-synthetic materials, and lingerie visibility.</li>
+          <li><b>Message:</b> "Show Them Straps".</li>
+          <li><b>Media:</b> Instagram (primary storytelling platform), website.</li>
+          <li>Pop-ups, exhibitions (e.g. Lil Flea, Raw Collaborative), and design-led retail environments.</li>
         </ul>
       </div>
       <div class="p">
-        <div class="letter">ज</div>
-        <h4 class="kicker">People</h4>
+        <div class="letter">स्थ</div>
+        <h4 class="kicker">Place</h4>
         <ul>
-          <li>The community of repair.</li>
-          <li>The reader of labels.</li>
-          <li>The illustrator.</li>
-          <li>The block-print cluster.</li>
-          <li>The four founders.</li>
+          <li><b>Distribution channels:</b> D2C (website) for full brand experience and storytelling.</li>
+          <li>Stockists / curated retail partners for physical access and discovery.</li>
+          <li><b>Logistics:</b> small-batch or made-to-order production.</li>
+          <li><b>Service levels:</b> integrated repair services as part of after-sales engagement.</li>
+          <li><b>Location:</b> urban design-conscious markets (Mumbai, Bangalore, Delhi).</li>
+          <li><b>Market coverage:</b> niche, selectively expanded through aligned stockists (Good Earth).</li>
         </ul>
       </div>
     </div>
 
     <div class="message">
-      <div class="lbl">Brand message</div>
-      <div class="slogan">Show them straps.</div>
-      <div class="deva-tag">पट्टी दिखाओ ·  visibility as styling</div>
+      <div class="lbl">Message</div>
+      <div class="slogan">Show Them Straps</div>
     </div>
   </div>
 </section>
@@ -1661,23 +1551,21 @@ p + p{margin-top:1em}
 <!-- ========== COST SHEET ========== -->
 <section id="cost" class="page chapter" data-num="१६" data-title="Cost Sheet">
   <div class="cost">
-    <h4 class="kicker">Chapter 16</h4>
-    <h2>Cost sheet — single bra, new construction.</h2>
-    <p class="lead">A clean, transparent build. No hidden material lines. The repair system is part of the cost, not an add-on.</p>
+    <h4 class="kicker">Cost Sheet</h4>
 
     <div class="cost-table">
-      <div class="row"><div class="cell lbl">Fabric (kala + organic cotton)</div><div class="cell r">₹ 200</div></div>
+      <div class="row"><div class="cell lbl">Fabric</div><div class="cell r">₹ 200</div></div>
       <div class="row"><div class="cell lbl">Pads</div><div class="cell r">₹ 55</div></div>
       <div class="row"><div class="cell lbl">Trims</div><div class="cell r">₹ 55</div></div>
       <div class="row"><div class="cell lbl">Strap fabric</div><div class="cell r">₹ 40</div></div>
-      <div class="row"><div class="cell lbl">Block printing</div><div class="cell r">₹ 110</div></div>
-      <div class="row"><div class="cell lbl">CM (cut + make)</div><div class="cell r">₹ 290</div></div>
-      <div class="row"><div class="cell lbl">Packaging (modular fabric)</div><div class="cell r">₹ 75</div></div>
+      <div class="row"><div class="cell lbl">Printing</div><div class="cell r">₹ 110</div></div>
+      <div class="row"><div class="cell lbl">CM</div><div class="cell r">₹ 290</div></div>
+      <div class="row"><div class="cell lbl">Packaging</div><div class="cell r">₹ 75</div></div>
       <div class="row"><div class="cell lbl">Sampling</div><div class="cell r">₹ 30</div></div>
       <div class="row"><div class="cell lbl">Wastage</div><div class="cell r">₹ 60</div></div>
-      <div class="row"><div class="cell lbl">Repair system allocation</div><div class="cell r">₹ 25</div></div>
-      <div class="row total"><div class="cell lbl">Cost Price (CP)</div><div class="cell r">₹ 940</div></div>
-      <div class="row grand"><div class="cell lbl">Selling Price (CP ÷ 0.30)</div><div class="cell r">₹ 3,133</div></div>
+      <div class="row"><div class="cell lbl">Repair system</div><div class="cell r">₹ 25</div></div>
+      <div class="row total"><div class="cell lbl">CP</div><div class="cell r">₹ 940</div></div>
+      <div class="row grand"><div class="cell lbl">SP = 940 ÷ 0.3</div><div class="cell r">₹ 3,133</div></div>
     </div>
 
     <div class="cost-derived">
